@@ -5,6 +5,7 @@ import { CategoryDetail } from './pages/CategoryDetail';
 import { TechTree } from './pages/TechTree';
 import { Roadmap } from './pages/Roadmap';
 import { MyLearning } from './pages/MyLearning';
+import SimulationsPage from './pages/SimulationsPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="tech-tree" element={<TechTree />} />
           <Route path="roadmap" element={<Roadmap />} />
           <Route path="my-learning" element={<MyLearning />} />
+          <Route path="simulations" element={<SimulationsPage />} />
         </Route>
       </Routes>
     </Router>

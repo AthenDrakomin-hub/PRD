@@ -89,6 +89,7 @@ ${item.resources.map(r => '- [' + r.title + '](' + r.url + ')').join('\n')}
     { name: '首页', path: '/' },
     { name: '科技树', path: '/tech-tree' },
     { name: '学习路径', path: '/roadmap' },
+    { name: '实战靶场', path: '/simulations' },
     { name: '我的学习', path: '/my-learning' }
   ];
 

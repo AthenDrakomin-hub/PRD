@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Search, ArrowLeft, X, ExternalLink, Activity } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { categories, techItems, TechItem } from '../../data';
+import MarkdownViewer from '../../components/MarkdownViewer';
 
 export const CategoryDetail: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -175,52 +176,58 @@ export const CategoryDetail: React.FC = () => {
             </div>
             
             <div className="flex-1 overflow-y-auto p-6 markdown-body">
-              <ReactMarkdown>{selectedTech.principle}</ReactMarkdown>
-              
-              <div className="mt-8 grid md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-4 border-b border-dark-border pb-2">典型工具</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedTech.tools.map(tool => (
-                      <span key={tool} className="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-cyber-accent">
-                        {tool}
-                      </span>
-                    ))}
+              {selectedTech.path ? (
+                <MarkdownViewer filePath={selectedTech.path} />
+              ) : (
+                <>
+                  <ReactMarkdown>{selectedTech.principle}</ReactMarkdown>
+                  
+                  <div className="mt-8 grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-4 border-b border-dark-border pb-2">典型工具</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedTech.tools.map(tool => (
+                          <span key={tool} className="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-cyber-accent">
+                            {tool}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-4 border-b border-dark-border pb-2">学习资源</h3>
+                      <ul className="space-y-2">
+                        {selectedTech.resources.map((res, i) => (
+                          <li key={i}>
+                            <a 
+                              href={res.url} 
+                              target="_blank" 
+                              rel="norenoopener noreferrer"
+                              className="flex items-center gap-2 text-sm text-gray-300 hover:text-cyber-accent transition-colors"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              {res.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-4 border-b border-dark-border pb-2">学习资源</h3>
-                  <ul className="space-y-2">
-                    {selectedTech.resources.map((res, i) => (
-                      <li key={i}>
-                        <a 
-                          href={res.url} 
-                          target="_blank" 
-                          rel="norenoopener noreferrer"
-                          className="flex items-center gap-2 text-sm text-gray-300 hover:text-cyber-accent transition-colors"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          {res.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
 
-              <div className="mt-8">
-                <h3 className="text-lg font-bold text-white mb-4 border-b border-dark-border pb-2">实践步骤</h3>
-                <div className="bg-dark-bg rounded-lg p-6 border border-dark-border">
-                  <ol className="list-decimal pl-4 space-y-4">
-                    {selectedTech.practiceSteps.map((step, i) => (
-                      <li key={i} className="text-gray-300 pl-2">
-                        {step}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </div>
+                  <div className="mt-8">
+                    <h3 className="text-lg font-bold text-white mb-4 border-b border-dark-border pb-2">实践步骤</h3>
+                    <div className="bg-dark-bg rounded-lg p-6 border border-dark-border">
+                      <ol className="list-decimal pl-4 space-y-4">
+                        {selectedTech.practiceSteps.map((step, i) => (
+                          <li key={i} className="text-gray-300 pl-2">
+                            {step}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
