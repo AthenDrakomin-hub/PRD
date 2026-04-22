@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// -----------------------------------------
+// 面向 Web3 SaaS 平台的数据模型 (Identity-Based Platform)
+// -----------------------------------------
+
+// 租户/客户模型 (购买了通行证的人)
+model Tenant {
+  id        String   @id @default(uuid())
+  wallet    String   @unique // Web3 客户的钱包地址作为唯一标识
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 关联的会员订阅信息
+  subscription Subscription?
+  // 租户当前活跃的安全节点 (Active Nodes)
+  activeNodes  ActiveNode[]
+}
+
+// 会员订阅模型 (控制额度和权限)
+model Subscription {
+  id             String    @id @default(uuid())
+  tenantId       String    @unique
+  tenant         Tenant    @relation(fields: [tenantId], references: [id])
+  
+  tier           String    // 'Pro', 'Enterprise', 'Web3-Native'
+  accessToken    String    @unique // 用于 CLI 认证的 Token (e.g. kf_live_xxxx)
+  maxActiveNodes Int       // 该会员等级允许并发拉起的最大防御节点数
+  status         String    // 'ACTIVE', 'EXPIRED', 'SUSPENDED'
+  
+  expiresAt      DateTime  // 订阅过期时间
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+// 租户的防御拓扑图 (Admin 保存的全局 DSL 配置)
+model PlatformConfig {
+  id             String   @id @default(uuid())
+  // 将整个 KForgeMembershipDSL 以 JSON 形式存储
+  configJson     String   
+  version        String   @default("1.0.0")
+  publishedAt    DateTime @default(now())
+}
+
+// 活跃的安全防御节点 (CLI 拉起的容器实例记录)
+model ActiveNode {
+  id        String   @id @default(uuid())
+  tenantId  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+  
+  skillId   String   // 使用的武器 (e.g., 'ddos-ip-shield')
+  publicPort String  // 对外暴露的端口
+  targetHost String  // 保护的源站
+  status    String   // 'RUNNING', 'FAILED', 'STOPPED'
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
