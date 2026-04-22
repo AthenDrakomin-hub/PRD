@@ -1,0 +1,70 @@
+name: KForge SaaS CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  release:
+    types: [created]
+
+jobs:
+  # 任务 1: 构建并混淆打包 CLI 工具
+  build-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and Obfuscate CLI
+        run: npm run build --workspace=@kforge/cli
+
+      - name: Upload CLI Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kforge-cli-dist
+          path: packages/cli/dist/index.js
+
+  # 任务 2: 构建并推送 Daemon API Docker 镜像
+  build-daemon-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      # 这里可以添加 Docker Login 和 Docker Build & Push 逻辑
+      # - name: Log in to Docker Hub
+      #   uses: docker/login-action@v3
+      #   with:
+      #     username: ${{ secrets.DOCKER_USERNAME }}
+      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Build Daemon Docker Image (Dry Run)
+        run: |
+          echo "FROM node:18-alpine" > Dockerfile
+          echo "WORKDIR /app" >> Dockerfile
+          echo "COPY . ." >> Dockerfile
+          echo "RUN npm install && npm run build --workspace=@kforge/daemon" >> Dockerfile
+          echo "EXPOSE 4000" >> Dockerfile
+          echo "CMD [\"npm\", \"run\", \"dev:daemon\"]" >> Dockerfile
+          docker build -t kforge-daemon:latest .
+
+  # 任务 3: 发布至 npm (仅在 Release 时触发)
+  publish-npm:
+    needs: [build-cli]
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Publish KForge CLI to npm
+        run: npm publish --workspace=@kforge/cli --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
