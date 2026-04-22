@@ -1,8 +1,9 @@
-import React, { useMemo, useState, useRef } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { categories, techItems } from '../../data';
 import { useStore, TechStatus } from '../../store/useStore';
 import { echartsTheme, getTechNodeStyle, baseEchartsOption } from '../../config/echartsTheme';
+import { TechNode } from '../../types'; // 引入定义的节点类型
 import { X, ExternalLink, Activity, BookOpen, ChevronRight, Download, Upload, Shield, Sword, Flag } from 'lucide-react';
 import MarkdownViewer from '../../components/MarkdownViewer';
 import AiExplanation from '../../components/AiExplanation';
@@ -13,6 +14,17 @@ export const TechTree: React.FC = () => {
   const [currentPath, setCurrentPath] = useState<'all' | 'red' | 'blue' | 'ctf'>('all');
   const echartsRef = useRef<ReactECharts>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // 1. 增加：窗口大小改变时自动触发 ECharts 重绘
+  useEffect(() => {
+    const handleResize = () => {
+      if (echartsRef.current) {
+        echartsRef.current.getEchartsInstance().resize();
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // 路径过滤逻辑
   const filteredTechItems = useMemo(() => {
@@ -46,7 +58,8 @@ export const TechTree: React.FC = () => {
     click: handleNodeClick,
   };
 
-  const treeData = useMemo(() => {
+  // 2. 增加：使用强类型 TechNode，并下发预留的 icon 字段
+  const treeData: TechNode = useMemo(() => {
     return {
       name: 'KForge | 墟\n知识锻造体系',
       itemStyle: { color: echartsTheme.colors.root },
@@ -55,6 +68,7 @@ export const TechTree: React.FC = () => {
         name: cat.name.replace(/(.{6})/g, '$1\n'), // 自动换行
         itemStyle: { color: echartsTheme.colors.category },
         symbolSize: echartsTheme.sizes.category,
+        icon: cat.icon, // 传递大类图标
         children: techItems
           .filter((tech) => tech.categoryId === cat.id)
           .filter((tech) => filteredTechItems.some(f => f.id === tech.id)) // 加上路径过滤
@@ -67,11 +81,12 @@ export const TechTree: React.FC = () => {
               symbolSize: echartsTheme.sizes.tech,
               value: tech.description,
               categoryId: tech.categoryId,
+              icon: tech.icon, // 传递技术点图标
             };
           }),
       })),
     };
-  }, [userProgress]); // 绑定 userProgress 依赖，状态改变自动重绘
+  }, [userProgress, filteredTechItems]); // 补充 filteredTechItems 依赖
 
   const option = {
     tooltip: baseEchartsOption.tooltip,
@@ -89,14 +104,45 @@ export const TechTree: React.FC = () => {
           verticalAlign: 'middle',
           align: 'right',
           fontSize: 14,
-          color: echartsTheme.colors.text.primary
+          color: echartsTheme.colors.text.primary,
+          // 动态判断是否带有 icon 并套用富文本模板
+          formatter: function (params: any) {
+            if (params.data.icon) {
+              return `{icon|${params.data.icon}} {name|${params.name}}`;
+            }
+            return `{name|${params.name}}`;
+          },
+          rich: {
+            icon: {
+              fontSize: 14,
+              // 如果将来 icon 传的是 URL，可以在此启用图片渲染：
+              // height: 16, width: 16, align: 'center', backgroundColor: { image: '...' }
+            },
+            name: {
+              fontSize: 14,
+              color: echartsTheme.colors.text.primary,
+            }
+          }
         },
         leaves: {
           label: {
             position: 'right',
             verticalAlign: 'middle',
             align: 'left',
-            color: echartsTheme.colors.text.highlight
+            color: echartsTheme.colors.text.highlight,
+            formatter: function (params: any) {
+              if (params.data.icon) {
+                return `{icon|${params.data.icon}} {name|${params.name}}`;
+              }
+              return `{name|${params.name}}`;
+            },
+            rich: {
+              icon: { fontSize: 14 },
+              name: {
+                fontSize: 14,
+                color: echartsTheme.colors.text.highlight,
+              }
+            }
           }
         },
         expandAndCollapse: true,
