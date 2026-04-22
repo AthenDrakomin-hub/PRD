@@ -42,7 +42,26 @@ function parseMarkdown(filePath) {
   // 生成一个唯一 ID，用于前端路由
   const id = path.basename(filePath, '.md').toLowerCase().replace(/\s+/g, '-');
   // 默认分类，如果未指定则用目录名推断
-  const category = data.category || path.basename(path.dirname(filePath));
+  const rawCategory = data.category || path.basename(path.dirname(filePath));
+  
+  // 建立分类映射字典，将中文名或非标准目录名映射到 categories.ts 中定义的 ID
+  const categoryMap = {
+    '网络隐匿': 'network-concealment',
+    'concealment-access': 'network-concealment',
+    '02_网络隐匿': 'network-concealment',
+    '威胁检测': 'threat-detection',
+    '数据保护': 'data-protection',
+    '应用安全': 'app-security',
+    '云原生安全': 'app-security', // 临时映射到相近分类
+    'host-system-defense': 'app-security',
+    'network-app-defense': 'app-security',
+    'emerging-defense': 'app-security',
+    '项目管理': 'app-security', // 如 STRATEGY.md 临时放置
+    'ai-dev-tools': 'ai-dev-tools',
+    'trae-solo': 'ai-dev-tools',
+  };
+  
+  const categoryId = categoryMap[rawCategory] || 'app-security'; // 默认映射到 app-security 避免丢失
   
   // 保留相对路径以便前端 fetch
   const relativePath = path.relative(path.join(__dirname, '..'), filePath).split(path.sep).join('/');
@@ -50,7 +69,7 @@ function parseMarkdown(filePath) {
   return {
     id,
     name: data.title || path.basename(filePath, '.md'),
-    categoryId: category,
+    categoryId: categoryId,
     tags: data.tags || [],
     description: data.summary || '',
     difficulty: data.skill_level === '专家' ? 'high' : (data.skill_level === '进阶' ? 'medium' : 'low'),

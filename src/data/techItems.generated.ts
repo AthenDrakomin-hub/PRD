@@ -1,12 +1,12 @@
 // 该文件由脚本自动生成，请勿手动修改
-// 生成时间: 2026-04-22T12:56:20.126Z
+// 生成时间: 2026-04-22T13:49:46.486Z
 import { TechItem } from './techItems';
 
 export const generatedTechItems: TechItem[] = [
   {
     "id": "strategy",
     "name": "KForge 产品战略与商业路线图",
-    "categoryId": "项目管理",
+    "categoryId": "app-security",
     "tags": [
       "战略",
       "商业分析",
@@ -30,7 +30,7 @@ export const generatedTechItems: TechItem[] = [
   {
     "id": "trae-agent-mode",
     "name": "trae-agent-mode",
-    "categoryId": "trae-solo",
+    "categoryId": "ai-dev-tools",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -43,13 +43,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.121Z",
-    "updatedAt": "2026-04-22T12:56:20.121Z"
+    "createdAt": "2026-04-22T13:49:46.481Z",
+    "updatedAt": "2026-04-22T13:49:46.481Z"
   },
   {
     "id": "trae-builder-mode",
     "name": "trae-builder-mode",
-    "categoryId": "trae-solo",
+    "categoryId": "ai-dev-tools",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -62,13 +62,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.121Z",
-    "updatedAt": "2026-04-22T12:56:20.121Z"
+    "createdAt": "2026-04-22T13:49:46.481Z",
+    "updatedAt": "2026-04-22T13:49:46.481Z"
   },
   {
     "id": "trae-context-engine",
     "name": "trae-context-engine",
-    "categoryId": "trae-solo",
+    "categoryId": "ai-dev-tools",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -81,13 +81,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.121Z",
-    "updatedAt": "2026-04-22T12:56:20.121Z"
+    "createdAt": "2026-04-22T13:49:46.481Z",
+    "updatedAt": "2026-04-22T13:49:46.481Z"
   },
   {
     "id": "trae-mcp-integration",
     "name": "trae-mcp-integration",
-    "categoryId": "trae-solo",
+    "categoryId": "ai-dev-tools",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -100,13 +100,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.121Z",
-    "updatedAt": "2026-04-22T12:56:20.121Z"
+    "createdAt": "2026-04-22T13:49:46.481Z",
+    "updatedAt": "2026-04-22T13:49:46.481Z"
   },
   {
     "id": "ebpf",
     "name": "eBPF 容器安全监控",
-    "categoryId": "云原生安全",
+    "categoryId": "app-security",
     "tags": [
       "eBPF",
       "容器安全",
@@ -130,7 +130,7 @@ export const generatedTechItems: TechItem[] = [
   {
     "id": "image-scanning",
     "name": "容器镜像漏洞扫描与合规",
-    "categoryId": "云原生安全",
+    "categoryId": "app-security",
     "tags": [
       "镜像安全",
       "Trivy",
@@ -154,7 +154,7 @@ export const generatedTechItems: TechItem[] = [
   {
     "id": "access-control-models",
     "name": "access-control-models",
-    "categoryId": "concealment-access",
+    "categoryId": "network-concealment",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -167,13 +167,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.122Z",
-    "updatedAt": "2026-04-22T12:56:20.122Z"
+    "createdAt": "2026-04-22T13:49:46.482Z",
+    "updatedAt": "2026-04-22T13:49:46.482Z"
   },
   {
     "id": "advanced-proxy-xff",
     "name": "advanced-proxy-xff",
-    "categoryId": "concealment-access",
+    "categoryId": "network-concealment",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -186,13 +186,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.122Z",
-    "updatedAt": "2026-04-22T12:56:20.122Z"
+    "createdAt": "2026-04-22T13:49:46.482Z",
+    "updatedAt": "2026-04-22T13:49:46.482Z"
   },
   {
     "id": "anonymous-networks",
     "name": "anonymous-networks",
-    "categoryId": "concealment-access",
+    "categoryId": "network-concealment",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -205,13 +205,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.482Z",
+    "updatedAt": "2026-04-22T13:49:46.482Z"
   },
   {
     "id": "multi-hop-proxy",
     "name": "multi-hop-proxy",
-    "categoryId": "concealment-access",
+    "categoryId": "network-concealment",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -224,13 +224,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.482Z",
+    "updatedAt": "2026-04-22T13:49:46.482Z"
   },
   {
     "id": "port-knocking-spa",
     "name": "port-knocking-spa",
-    "categoryId": "concealment-access",
+    "categoryId": "network-concealment",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -243,13 +243,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.483Z",
+    "updatedAt": "2026-04-22T13:49:46.483Z"
   },
   {
     "id": "traffic-obfuscation",
     "name": "traffic-obfuscation",
-    "categoryId": "concealment-access",
+    "categoryId": "network-concealment",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -262,13 +262,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.483Z",
+    "updatedAt": "2026-04-22T13:49:46.483Z"
   },
   {
     "id": "ai-ml-security",
     "name": "ai-ml-security",
-    "categoryId": "emerging-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -281,13 +281,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.483Z",
+    "updatedAt": "2026-04-22T13:49:46.483Z"
   },
   {
     "id": "did",
     "name": "did",
-    "categoryId": "emerging-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -300,13 +300,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.483Z",
+    "updatedAt": "2026-04-22T13:49:46.483Z"
   },
   {
     "id": "e2ee",
     "name": "e2ee",
-    "categoryId": "emerging-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -319,13 +319,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.483Z",
+    "updatedAt": "2026-04-22T13:49:46.483Z"
   },
   {
     "id": "sase",
     "name": "sase",
-    "categoryId": "emerging-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -338,13 +338,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.483Z",
+    "updatedAt": "2026-04-22T13:49:46.483Z"
   },
   {
     "id": "zta",
     "name": "zta",
-    "categoryId": "emerging-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -357,13 +357,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.123Z",
-    "updatedAt": "2026-04-22T12:56:20.123Z"
+    "createdAt": "2026-04-22T13:49:46.483Z",
+    "updatedAt": "2026-04-22T13:49:46.483Z"
   },
   {
     "id": "cspm",
     "name": "cspm",
-    "categoryId": "host-system-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -376,13 +376,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.484Z",
+    "updatedAt": "2026-04-22T13:49:46.484Z"
   },
   {
     "id": "cwpp",
     "name": "cwpp",
-    "categoryId": "host-system-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -395,13 +395,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.484Z",
+    "updatedAt": "2026-04-22T13:49:46.484Z"
   },
   {
     "id": "deception-defense",
     "name": "deception-defense",
-    "categoryId": "host-system-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -414,13 +414,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.484Z",
+    "updatedAt": "2026-04-22T13:49:46.484Z"
   },
   {
     "id": "dlp",
     "name": "dlp",
-    "categoryId": "host-system-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -433,13 +433,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.484Z",
+    "updatedAt": "2026-04-22T13:49:46.484Z"
   },
   {
     "id": "host-hardening",
     "name": "host-hardening",
-    "categoryId": "host-system-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -452,13 +452,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.484Z",
+    "updatedAt": "2026-04-22T13:49:46.484Z"
   },
   {
     "id": "mfa",
     "name": "mfa",
-    "categoryId": "host-system-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -471,13 +471,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.484Z",
+    "updatedAt": "2026-04-22T13:49:46.484Z"
   },
   {
     "id": "siem",
     "name": "siem",
-    "categoryId": "host-system-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -490,13 +490,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.484Z",
+    "updatedAt": "2026-04-22T13:49:46.484Z"
   },
   {
     "id": "cdn",
     "name": "cdn",
-    "categoryId": "network-app-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -509,13 +509,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.484Z",
+    "updatedAt": "2026-04-22T13:49:46.484Z"
   },
   {
     "id": "ddos-mitigation",
     "name": "ddos-mitigation",
-    "categoryId": "network-app-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -528,13 +528,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.124Z",
-    "updatedAt": "2026-04-22T12:56:20.124Z"
+    "createdAt": "2026-04-22T13:49:46.485Z",
+    "updatedAt": "2026-04-22T13:49:46.485Z"
   },
   {
     "id": "dnssec",
     "name": "dnssec",
-    "categoryId": "network-app-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -547,13 +547,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.125Z",
-    "updatedAt": "2026-04-22T12:56:20.125Z"
+    "createdAt": "2026-04-22T13:49:46.485Z",
+    "updatedAt": "2026-04-22T13:49:46.485Z"
   },
   {
     "id": "ids-ips",
     "name": "ids-ips",
-    "categoryId": "network-app-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -566,13 +566,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.125Z",
-    "updatedAt": "2026-04-22T12:56:20.125Z"
+    "createdAt": "2026-04-22T13:49:46.485Z",
+    "updatedAt": "2026-04-22T13:49:46.485Z"
   },
   {
     "id": "ngfw",
     "name": "ngfw",
-    "categoryId": "network-app-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -585,13 +585,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.125Z",
-    "updatedAt": "2026-04-22T12:56:20.125Z"
+    "createdAt": "2026-04-22T13:49:46.485Z",
+    "updatedAt": "2026-04-22T13:49:46.485Z"
   },
   {
     "id": "rasp",
     "name": "rasp",
-    "categoryId": "network-app-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -604,13 +604,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.125Z",
-    "updatedAt": "2026-04-22T12:56:20.125Z"
+    "createdAt": "2026-04-22T13:49:46.485Z",
+    "updatedAt": "2026-04-22T13:49:46.485Z"
   },
   {
     "id": "waf",
     "name": "waf",
-    "categoryId": "network-app-defense",
+    "categoryId": "app-security",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -623,13 +623,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.125Z",
-    "updatedAt": "2026-04-22T12:56:20.125Z"
+    "createdAt": "2026-04-22T13:49:46.485Z",
+    "updatedAt": "2026-04-22T13:49:46.485Z"
   },
   {
     "id": "透明代理_手把手教程",
     "name": "透明代理_手把手教程",
-    "categoryId": "02_网络隐匿",
+    "categoryId": "network-concealment",
     "tags": [],
     "description": "",
     "difficulty": "low",
@@ -642,13 +642,13 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T12:56:20.125Z",
-    "updatedAt": "2026-04-22T12:56:20.125Z"
+    "createdAt": "2026-04-22T13:49:46.486Z",
+    "updatedAt": "2026-04-22T13:49:46.486Z"
   },
   {
     "id": "隐匿_透明代理-tproxy实战",
     "name": "TPROXY 透明代理实战：让所有流量无感走代理",
-    "categoryId": "网络隐匿",
+    "categoryId": "network-concealment",
     "tags": [
       "透明代理",
       "TPROXY",
