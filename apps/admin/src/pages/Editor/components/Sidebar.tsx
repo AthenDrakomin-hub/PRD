@@ -1,9 +1,11 @@
 import React from 'react';
-import { Shield, Server, Activity, Plus } from 'lucide-react';
+import { Shield, Server, Activity, Plus, Key, Bug } from 'lucide-react';
 
 const NODE_TYPES = [
   { type: 'defense', label: 'DDoS与IP隐匿盾', id: 'ddos-ip-shield', icon: <Shield className="w-5 h-5 text-cyber-accent" /> },
   { type: 'defense', label: 'WAF应用防火墙', id: 'waf-shield', icon: <Shield className="w-5 h-5 text-blue-400" /> },
+  { type: 'defense', label: 'SPA单包隐身网关', id: 'port-knocking-spa', icon: <Key className="w-5 h-5 text-yellow-400" /> },
+  { type: 'monitor', label: '高交互欺骗蜜罐', id: 'deception-honeypot', icon: <Bug className="w-5 h-5 text-red-400" /> },
   { type: 'monitor', label: '流量异常监控', id: 'traffic-monitor', icon: <Activity className="w-5 h-5 text-purple-400" /> },
   { type: 'target', label: '宿主机内部服务', id: 'host-target', icon: <Server className="w-5 h-5 text-green-400" /> },
 ];

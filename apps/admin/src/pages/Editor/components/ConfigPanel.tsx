@@ -72,7 +72,8 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
                   <h3 className="text-white font-bold truncate">{selectedNode.data.label as string}</h3>
                 </div>
 
-                {selectedNode.data.skillId === 'ddos-ip-shield' && (
+                {/* 代理类节点通用配置 (DDoS盾 / WAF) */}
+                {(selectedNode.data.skillId === 'ddos-ip-shield' || selectedNode.data.skillId === 'waf-shield') && (
                   <div className="space-y-4">
                     <div>
                       <label className="block text-xs font-bold text-gray-400 mb-1.5">外部监听端口 (PUBLIC_PORT)</label>
@@ -103,8 +104,27 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
                     </div>
                   </div>
                 )}
-                {/* 可以根据不同的 skillId 渲染不同的配置表单 */}
-                {selectedNode.data.skillId !== 'ddos-ip-shield' && (
+
+                {/* 独立服务类节点通用配置 (SPA网关 / 蜜罐) */}
+                {(selectedNode.data.skillId === 'port-knocking-spa' || selectedNode.data.skillId === 'deception-honeypot') && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-400 mb-1.5">暴露端口 (PUBLIC_PORT)</label>
+                      <input 
+                        type="text" 
+                        value={selectedNode.data.config?.PUBLIC_PORT || '2222'}
+                        onChange={(e) => handleNodeConfigChange('PUBLIC_PORT', e.target.value)}
+                        className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-cyber-accent"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* 无需额外配置的节点 */}
+                {selectedNode.data.skillId !== 'ddos-ip-shield' && 
+                 selectedNode.data.skillId !== 'waf-shield' && 
+                 selectedNode.data.skillId !== 'port-knocking-spa' && 
+                 selectedNode.data.skillId !== 'deception-honeypot' && (
                   <div className="text-sm text-gray-500 italic">该节点暂无自定义配置项</div>
                 )}
               </div>
