@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bot, Copy, ExternalLink, Check } from 'lucide-react';
+import { Bot, Copy, ExternalLink, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { TechItem } from '../data/techItems';
 
 interface AiExplanationProps {
@@ -8,6 +8,7 @@ interface AiExplanationProps {
 
 const AiExplanation: React.FC<AiExplanationProps> = ({ tech }) => {
   const [copied, setCopied] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   // 生成专为 AI 大模型准备的结构化 Prompt
   const prompt = `你是一位拥有10年经验的高级网络安全架构师。请为我详细解释以下技术点，并遵循指定的结构：
@@ -46,23 +47,31 @@ const AiExplanation: React.FC<AiExplanationProps> = ({ tech }) => {
             <p className="text-gray-400 text-sm">觉得文档不够透彻？让 AI 结合实战经验为你解答。</p>
           </div>
         </div>
+        <button 
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-gray-400 hover:text-white transition-colors"
+        >
+          {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+        </button>
       </div>
 
-      <div className="bg-dark-card border border-dark-border rounded-lg p-4 mb-4 relative z-10">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-xs text-gray-500 font-mono uppercase">Generated Prompt</span>
-          <button 
-            onClick={handleCopyPrompt}
-            className="flex items-center gap-1.5 text-xs text-cyber-accent hover:text-white transition-colors bg-cyber-accent/10 hover:bg-cyber-accent/20 px-2 py-1 rounded"
-          >
-            {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-            {copied ? '已复制' : '复制提示词'}
-          </button>
+      {isExpanded && (
+        <div className="bg-dark-card border border-dark-border rounded-lg p-4 mb-4 relative z-10 transition-all duration-300">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-xs text-gray-500 font-mono uppercase">Generated Prompt</span>
+            <button 
+              onClick={handleCopyPrompt}
+              className="flex items-center gap-1.5 text-xs text-cyber-accent hover:text-white transition-colors bg-cyber-accent/10 hover:bg-cyber-accent/20 px-2 py-1 rounded"
+            >
+              {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? '已复制' : '复制提示词'}
+            </button>
+          </div>
+          <div className="text-sm text-gray-300 font-mono leading-relaxed h-32 overflow-y-auto custom-scrollbar whitespace-pre-wrap">
+            {prompt}
+          </div>
         </div>
-        <div className="text-sm text-gray-300 font-mono leading-relaxed h-24 overflow-y-auto custom-scrollbar whitespace-pre-wrap">
-          {prompt}
-        </div>
-      </div>
+      )}
 
       <div className="flex flex-col sm:flex-row gap-3 relative z-10">
         <a 

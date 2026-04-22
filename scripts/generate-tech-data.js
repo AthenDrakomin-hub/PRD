@@ -38,12 +38,15 @@ function findMarkdownFiles(dir) {
  */
 function parseMarkdown(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
-  const { data } = matter(content);
+  const parsed = matter(content);
+  const data = parsed.data || {};
+  const body = parsed.content || '';
+
   // 生成一个唯一 ID，用于前端路由
   const id = path.basename(filePath, '.md').toLowerCase().replace(/\s+/g, '-');
   // 默认分类，如果未指定则用目录名推断
   const rawCategory = data.category || path.basename(path.dirname(filePath));
-  
+
   // 建立分类映射字典，将中文名或非标准目录名映射到 categories.ts 中定义的 ID
   const categoryMap = {
     '网络隐匿': 'network-concealment',
@@ -60,18 +63,37 @@ function parseMarkdown(filePath) {
     'ai-dev-tools': 'ai-dev-tools',
     'trae-solo': 'ai-dev-tools',
   };
-  
+
   const categoryId = categoryMap[rawCategory] || 'app-security'; // 默认映射到 app-security 避免丢失
-  
+
+  // 智能提取标题：如果 frontmatter 中没有，则找第一个 # 号标题
+  let title = data.title;
+  if (!title) {
+    const titleMatch = body.match(/^#\s+(.+)$/m);
+    title = titleMatch ? titleMatch[1].trim() : path.basename(filePath, '.md');
+  }
+
+  // 智能提取描述：如果 frontmatter 中没有，则尝试找 ## 核心作用 或者是第一段正文
+  let description = data.summary;
+  if (!description) {
+    const coreMatch = body.match(/## 核心作用\s+([\s\S]*?)(?=##|$)/);
+    if (coreMatch) {
+      description = coreMatch[1].replace(/[\r\n]+/g, ' ').trim();
+    } else {
+      const firstParaMatch = body.replace(/^#.*$/gm, '').trim().split('\n')[0];
+      description = firstParaMatch ? firstParaMatch.trim() : '';
+    }
+  }
+
   // 保留相对路径以便前端 fetch
   const relativePath = path.relative(path.join(__dirname, '..'), filePath).split(path.sep).join('/');
-  
+
   return {
     id,
-    name: data.title || path.basename(filePath, '.md'),
+    name: title,
     categoryId: categoryId,
     tags: data.tags || [],
-    description: data.summary || '',
+    description: description,
     difficulty: data.skill_level === '专家' ? 'high' : (data.skill_level === '进阶' ? 'medium' : 'low'),
     path: relativePath, // 保留原始相对路径，后续用于渲染
     // 下面为了兼容原有界面，提供默认值

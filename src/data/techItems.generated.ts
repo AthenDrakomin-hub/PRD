@@ -1,5 +1,5 @@
 // 该文件由脚本自动生成，请勿手动修改
-// 生成时间: 2026-04-22T13:49:46.486Z
+// 生成时间: 2026-04-22T14:21:54.996Z
 import { TechItem } from './techItems';
 
 export const generatedTechItems: TechItem[] = [
@@ -29,10 +29,10 @@ export const generatedTechItems: TechItem[] = [
   },
   {
     "id": "trae-agent-mode",
-    "name": "trae-agent-mode",
+    "name": "Agent 模式自主编程",
     "categoryId": "ai-dev-tools",
     "tags": [],
-    "description": "",
+    "description": "赋予 IDE \"自主解决问题\"的能力，大幅降低人类开发者编码与调试的认知负荷。",
     "difficulty": "low",
     "path": "docs/ai-dev-tools/trae-solo/trae-agent-mode.md",
     "coreFunction": "详情请查看内部文档",
@@ -43,15 +43,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.481Z",
-    "updatedAt": "2026-04-22T13:49:46.481Z"
+    "createdAt": "2026-04-22T14:21:54.991Z",
+    "updatedAt": "2026-04-22T14:21:54.991Z"
   },
   {
     "id": "trae-builder-mode",
-    "name": "trae-builder-mode",
+    "name": "Builder 模式项目生成",
     "categoryId": "ai-dev-tools",
     "tags": [],
-    "description": "",
+    "description": "消除项目初期繁琐的配置与脚手架搭建工作，秒级生成可运行的 MVP 版本。",
     "difficulty": "low",
     "path": "docs/ai-dev-tools/trae-solo/trae-builder-mode.md",
     "coreFunction": "详情请查看内部文档",
@@ -62,15 +62,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.481Z",
-    "updatedAt": "2026-04-22T13:49:46.481Z"
+    "createdAt": "2026-04-22T14:21:54.991Z",
+    "updatedAt": "2026-04-22T14:21:54.991Z"
   },
   {
     "id": "trae-context-engine",
-    "name": "trae-context-engine",
+    "name": "智能上下文感知引擎",
     "categoryId": "ai-dev-tools",
     "tags": [],
-    "description": "",
+    "description": "解决大模型上下文窗口 (Context Window) 有限的问题，实现针对百万行级代码库的精准问答与修改。",
     "difficulty": "low",
     "path": "docs/ai-dev-tools/trae-solo/trae-context-engine.md",
     "coreFunction": "详情请查看内部文档",
@@ -81,15 +81,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.481Z",
-    "updatedAt": "2026-04-22T13:49:46.481Z"
+    "createdAt": "2026-04-22T14:21:54.991Z",
+    "updatedAt": "2026-04-22T14:21:54.991Z"
   },
   {
     "id": "trae-mcp-integration",
-    "name": "trae-mcp-integration",
+    "name": "MCP 协议扩展集成",
     "categoryId": "ai-dev-tools",
     "tags": [],
-    "description": "",
+    "description": "赋予 Agent \"联网\"与\"感知物理世界\"的能力，如读取 Figma 设计稿、查询内部数据库或调用 GitHub API。",
     "difficulty": "low",
     "path": "docs/ai-dev-tools/trae-solo/trae-mcp-integration.md",
     "coreFunction": "详情请查看内部文档",
@@ -100,8 +100,8 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.481Z",
-    "updatedAt": "2026-04-22T13:49:46.481Z"
+    "createdAt": "2026-04-22T14:21:54.992Z",
+    "updatedAt": "2026-04-22T14:21:54.992Z"
   },
   {
     "id": "ebpf",
@@ -153,10 +153,10 @@ export const generatedTechItems: TechItem[] = [
   },
   {
     "id": "access-control-models",
-    "name": "access-control-models",
+    "name": "访问控制模型 (RBAC/ABAC/ReBAC)",
     "categoryId": "network-concealment",
     "tags": [],
-    "description": "",
+    "description": "细粒度地控制用户或微服务对核心资源的访问权限，从系统设计层面防止越权漏洞的产生。",
     "difficulty": "low",
     "path": "docs/concealment-access/access-control-models.md",
     "coreFunction": "详情请查看内部文档",
@@ -167,15 +167,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.482Z",
-    "updatedAt": "2026-04-22T13:49:46.482Z"
+    "createdAt": "2026-04-22T14:21:54.992Z",
+    "updatedAt": "2026-04-22T14:21:54.992Z"
   },
   {
     "id": "advanced-proxy-xff",
-    "name": "advanced-proxy-xff",
+    "name": "高级代理与 XFF 头伪装 (Advanced Proxy & XFF Spoofing)",
     "categoryId": "network-concealment",
     "tags": [],
-    "description": "",
+    "description": "在复杂的七层反向代理架构中，正确传递、校验或伪造客户端真实 IP，是访问控制和溯源的核心博弈点。",
     "difficulty": "low",
     "path": "docs/concealment-access/advanced-proxy-xff.md",
     "coreFunction": "详情请查看内部文档",
@@ -186,15 +186,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.482Z",
-    "updatedAt": "2026-04-22T13:49:46.482Z"
+    "createdAt": "2026-04-22T14:21:54.993Z",
+    "updatedAt": "2026-04-22T14:21:54.993Z"
   },
   {
     "id": "anonymous-networks",
-    "name": "anonymous-networks",
+    "name": "匿名网络 (Anonymous Networks)",
     "categoryId": "network-concealment",
     "tags": [],
-    "description": "",
+    "description": "提供去中心化的强匿名通信，保护通信双方的隐私，从根本上抵御元数据分析和流量追踪。",
     "difficulty": "low",
     "path": "docs/concealment-access/anonymous-networks.md",
     "coreFunction": "详情请查看内部文档",
@@ -205,15 +205,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.482Z",
-    "updatedAt": "2026-04-22T13:49:46.482Z"
+    "createdAt": "2026-04-22T14:21:54.993Z",
+    "updatedAt": "2026-04-22T14:21:54.993Z"
   },
   {
     "id": "multi-hop-proxy",
-    "name": "multi-hop-proxy",
+    "name": "多级跳板与代理链 (Multi-hop Proxy)",
     "categoryId": "network-concealment",
     "tags": [],
-    "description": "",
+    "description": "在网络攻防中隐藏真实源头与目标资产，极大提升追踪溯源成本。通过在链路中串联多个代理节点，使得任何单一节点被攻破都无法还原完整的通信路径。",
     "difficulty": "low",
     "path": "docs/concealment-access/multi-hop-proxy.md",
     "coreFunction": "详情请查看内部文档",
@@ -224,15 +224,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.482Z",
-    "updatedAt": "2026-04-22T13:49:46.482Z"
+    "createdAt": "2026-04-22T14:21:54.993Z",
+    "updatedAt": "2026-04-22T14:21:54.993Z"
   },
   {
     "id": "port-knocking-spa",
-    "name": "port-knocking-spa",
+    "name": "端口敲门与单包授权 (Port Knocking / SPA)",
     "categoryId": "network-concealment",
     "tags": [],
-    "description": "",
+    "description": "默认在防火墙级别完全隐藏关键服务（如 SSH/RDP），使其对外部扫描器“隐身”，仅对持有正确密码学凭证的请求者动态开放。",
     "difficulty": "low",
     "path": "docs/concealment-access/port-knocking-spa.md",
     "coreFunction": "详情请查看内部文档",
@@ -243,15 +243,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.483Z",
-    "updatedAt": "2026-04-22T13:49:46.483Z"
+    "createdAt": "2026-04-22T14:21:54.993Z",
+    "updatedAt": "2026-04-22T14:21:54.993Z"
   },
   {
     "id": "traffic-obfuscation",
-    "name": "traffic-obfuscation",
+    "name": "流量混淆与伪装 (Traffic Obfuscation)",
     "categoryId": "network-concealment",
     "tags": [],
-    "description": "",
+    "description": "将代理或恶意特征流量伪装成正常的 Web 流量（如普通的 HTTPS 或 WebSocket），从而绕过防火墙的深度包检测（DPI）。",
     "difficulty": "low",
     "path": "docs/concealment-access/traffic-obfuscation.md",
     "coreFunction": "详情请查看内部文档",
@@ -262,15 +262,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.483Z",
-    "updatedAt": "2026-04-22T13:49:46.483Z"
+    "createdAt": "2026-04-22T14:21:54.993Z",
+    "updatedAt": "2026-04-22T14:21:54.993Z"
   },
   {
     "id": "ai-ml-security",
-    "name": "ai-ml-security",
+    "name": "AI/ML 驱动安全与 AI 安全防护",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "这是一个双刃剑：既利用大语言模型 (LLM) 和机器学习提升防御效率，又要针对 AI 系统本身的脆弱性进行安全加固。",
     "difficulty": "low",
     "path": "docs/emerging-defense/ai-ml-security.md",
     "coreFunction": "详情请查看内部文档",
@@ -281,15 +281,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.483Z",
-    "updatedAt": "2026-04-22T13:49:46.483Z"
+    "createdAt": "2026-04-22T14:21:54.993Z",
+    "updatedAt": "2026-04-22T14:21:54.993Z"
   },
   {
     "id": "did",
-    "name": "did",
+    "name": "去中心化身份 (Decentralized Identity)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "打破传统互联网巨头对数字身份的垄断，让用户将身份数据完全掌握在自己手中，实现隐私保护下的高信任身份验证。",
     "difficulty": "low",
     "path": "docs/emerging-defense/did.md",
     "coreFunction": "详情请查看内部文档",
@@ -300,15 +300,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.483Z",
-    "updatedAt": "2026-04-22T13:49:46.483Z"
+    "createdAt": "2026-04-22T14:21:54.993Z",
+    "updatedAt": "2026-04-22T14:21:54.993Z"
   },
   {
     "id": "e2ee",
-    "name": "e2ee",
+    "name": "端到端加密 (End-to-End Encryption)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "确保通信与存储的明文内容仅在合法的终端设备间可解密，中间的服务器节点即使被黑客完全攻破，也只能看到无法破解的密文。",
     "difficulty": "low",
     "path": "docs/emerging-defense/e2ee.md",
     "coreFunction": "详情请查看内部文档",
@@ -319,15 +319,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.483Z",
-    "updatedAt": "2026-04-22T13:49:46.483Z"
+    "createdAt": "2026-04-22T14:21:54.994Z",
+    "updatedAt": "2026-04-22T14:21:54.994Z"
   },
   {
     "id": "sase",
-    "name": "sase",
+    "name": "安全访问服务边缘 (SASE)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "将广域网 (SD-WAN) 与云原生安全能力（如 SWG, CASB, ZTNA）深度融合，为随时随地办公的现代企业提供统一的安全网络入口。",
     "difficulty": "low",
     "path": "docs/emerging-defense/sase.md",
     "coreFunction": "详情请查看内部文档",
@@ -338,15 +338,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.483Z",
-    "updatedAt": "2026-04-22T13:49:46.483Z"
+    "createdAt": "2026-04-22T14:21:54.994Z",
+    "updatedAt": "2026-04-22T14:21:54.994Z"
   },
   {
     "id": "zta",
-    "name": "zta",
+    "name": "零信任架构 (Zero Trust Architecture)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "彻底摒弃传统 VPN“内网即安全”的理念，假设网络已被完全攻破，对每一次访问进行无差别的持续验证。",
     "difficulty": "low",
     "path": "docs/emerging-defense/zta.md",
     "coreFunction": "详情请查看内部文档",
@@ -357,15 +357,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.483Z",
-    "updatedAt": "2026-04-22T13:49:46.483Z"
+    "createdAt": "2026-04-22T14:21:54.994Z",
+    "updatedAt": "2026-04-22T14:21:54.994Z"
   },
   {
     "id": "cspm",
-    "name": "cspm",
+    "name": "云安全态势管理 (CSPM)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "自动化扫描云基础设施与容器编排配置，提前发现并消除不符合安全基线（如 CIS Benchmarks）的风险。",
     "difficulty": "low",
     "path": "docs/host-system-defense/cspm.md",
     "coreFunction": "详情请查看内部文档",
@@ -376,15 +376,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.484Z",
-    "updatedAt": "2026-04-22T13:49:46.484Z"
+    "createdAt": "2026-04-22T14:21:54.994Z",
+    "updatedAt": "2026-04-22T14:21:54.994Z"
   },
   {
     "id": "cwpp",
-    "name": "cwpp",
+    "name": "云工作负载保护平台 (CWPP)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "针对现代云原生环境（Docker 容器、K8s 节点、Serverless）提供极低性能损耗的细粒度运行时安全监控与行为阻断。",
     "difficulty": "low",
     "path": "docs/host-system-defense/cwpp.md",
     "coreFunction": "详情请查看内部文档",
@@ -395,15 +395,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.484Z",
-    "updatedAt": "2026-04-22T13:49:46.484Z"
+    "createdAt": "2026-04-22T14:21:54.994Z",
+    "updatedAt": "2026-04-22T14:21:54.994Z"
   },
   {
     "id": "deception-defense",
-    "name": "deception-defense",
+    "name": "欺骗防御与蜜罐 (Deception Defense)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "化被动为主动，通过部署精心伪造的资产（端口、文件、凭证），攻击者一旦触碰即刻触发高可信、低误报的告警。",
     "difficulty": "low",
     "path": "docs/host-system-defense/deception-defense.md",
     "coreFunction": "详情请查看内部文档",
@@ -414,15 +414,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.484Z",
-    "updatedAt": "2026-04-22T13:49:46.484Z"
+    "createdAt": "2026-04-22T14:21:54.994Z",
+    "updatedAt": "2026-04-22T14:21:54.994Z"
   },
   {
     "id": "dlp",
-    "name": "dlp",
+    "name": "数据防泄漏 (DLP)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "监控并阻止企业敏感数据（如 PII 隐私信息、金融数据、私钥凭证）越界流出安全环境。",
     "difficulty": "low",
     "path": "docs/host-system-defense/dlp.md",
     "coreFunction": "详情请查看内部文档",
@@ -433,15 +433,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.484Z",
-    "updatedAt": "2026-04-22T13:49:46.484Z"
+    "createdAt": "2026-04-22T14:21:54.994Z",
+    "updatedAt": "2026-04-22T14:21:54.994Z"
   },
   {
     "id": "host-hardening",
-    "name": "host-hardening",
+    "name": "主机安全加固 (Host Hardening)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "减小操作系统的基础攻击面，大幅提升攻击者利用漏洞获取权限或进行内网横向移动的门槛。",
     "difficulty": "low",
     "path": "docs/host-system-defense/host-hardening.md",
     "coreFunction": "详情请查看内部文档",
@@ -452,15 +452,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.484Z",
-    "updatedAt": "2026-04-22T13:49:46.484Z"
+    "createdAt": "2026-04-22T14:21:54.994Z",
+    "updatedAt": "2026-04-22T14:21:54.994Z"
   },
   {
     "id": "mfa",
-    "name": "mfa",
+    "name": "多因素认证与无密码时代 (MFA / Passwordless)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "在密码已遭泄露的最坏情况下，依然保障账户的绝对安全。在 2026 年，全面迈向抗钓鱼的无密码 (Passkeys) 时代是身份安全的重中之重。",
     "difficulty": "low",
     "path": "docs/host-system-defense/mfa.md",
     "coreFunction": "详情请查看内部文档",
@@ -471,15 +471,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.484Z",
-    "updatedAt": "2026-04-22T13:49:46.484Z"
+    "createdAt": "2026-04-22T14:21:54.995Z",
+    "updatedAt": "2026-04-22T14:21:54.995Z"
   },
   {
     "id": "siem",
-    "name": "siem",
+    "name": "安全信息和事件管理 (SIEM)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "打破数据孤岛，集中收集跨网络、主机、云平台的安全日志，通过关联分析发现隐蔽的复杂攻击链路。",
     "difficulty": "low",
     "path": "docs/host-system-defense/siem.md",
     "coreFunction": "详情请查看内部文档",
@@ -490,15 +490,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.484Z",
-    "updatedAt": "2026-04-22T13:49:46.484Z"
+    "createdAt": "2026-04-22T14:21:54.995Z",
+    "updatedAt": "2026-04-22T14:21:54.995Z"
   },
   {
     "id": "cdn",
-    "name": "cdn",
+    "name": "内容分发网络 (CDN)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "在加速静态资源访问、提升用户体验的同时，隐藏并保护源站 IP 免受直接的定向攻击。",
     "difficulty": "low",
     "path": "docs/network-app-defense/cdn.md",
     "coreFunction": "详情请查看内部文档",
@@ -509,15 +509,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.484Z",
-    "updatedAt": "2026-04-22T13:49:46.484Z"
+    "createdAt": "2026-04-22T14:21:54.995Z",
+    "updatedAt": "2026-04-22T14:21:54.995Z"
   },
   {
     "id": "ddos-mitigation",
-    "name": "ddos-mitigation",
+    "name": "DDoS 清洗服务与缓解技术",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "抵御大规模分布式拒绝服务攻击，保障网络带宽不被拥塞，确保业务的高可用性。",
     "difficulty": "low",
     "path": "docs/network-app-defense/ddos-mitigation.md",
     "coreFunction": "详情请查看内部文档",
@@ -528,15 +528,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.485Z",
-    "updatedAt": "2026-04-22T13:49:46.485Z"
+    "createdAt": "2026-04-22T14:21:54.995Z",
+    "updatedAt": "2026-04-22T14:21:54.995Z"
   },
   {
     "id": "dnssec",
-    "name": "dnssec",
+    "name": "域名系统安全 (DNSSEC/DoH/DoQ)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "确保 DNS 解析结果的真实性和完整性，彻底防止 DNS 劫持、中间人篡改和缓存投毒。",
     "difficulty": "low",
     "path": "docs/network-app-defense/dnssec.md",
     "coreFunction": "详情请查看内部文档",
@@ -547,15 +547,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.485Z",
-    "updatedAt": "2026-04-22T13:49:46.485Z"
+    "createdAt": "2026-04-22T14:21:54.995Z",
+    "updatedAt": "2026-04-22T14:21:54.995Z"
   },
   {
     "id": "ids-ips",
-    "name": "ids-ips",
+    "name": "入侵检测与防御系统 (IDS/IPS)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "实时监控网络流量，发现并即时阻断已知的漏洞利用、扫描行为和恶意网络通信。",
     "difficulty": "low",
     "path": "docs/network-app-defense/ids-ips.md",
     "coreFunction": "详情请查看内部文档",
@@ -566,15 +566,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.485Z",
-    "updatedAt": "2026-04-22T13:49:46.485Z"
+    "createdAt": "2026-04-22T14:21:54.995Z",
+    "updatedAt": "2026-04-22T14:21:54.995Z"
   },
   {
     "id": "ngfw",
-    "name": "ngfw",
+    "name": "下一代防火墙 (NGFW)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "结合传统 L4 防火墙与深度包检测 (DPI) 技术，实现细粒度的应用层可见性与管控，不仅看端口，更看懂“应用”。",
     "difficulty": "low",
     "path": "docs/network-app-defense/ngfw.md",
     "coreFunction": "详情请查看内部文档",
@@ -585,15 +585,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.485Z",
-    "updatedAt": "2026-04-22T13:49:46.485Z"
+    "createdAt": "2026-04-22T14:21:54.995Z",
+    "updatedAt": "2026-04-22T14:21:54.995Z"
   },
   {
     "id": "rasp",
-    "name": "rasp",
+    "name": "运行时应用自我保护 (RASP)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "将安全防护彻底下沉到代码执行层，从应用程序内部直接监控和拦截高级攻击，是纵深防御的最后一道防线。",
     "difficulty": "low",
     "path": "docs/network-app-defense/rasp.md",
     "coreFunction": "详情请查看内部文档",
@@ -604,15 +604,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.485Z",
-    "updatedAt": "2026-04-22T13:49:46.485Z"
+    "createdAt": "2026-04-22T14:21:54.995Z",
+    "updatedAt": "2026-04-22T14:21:54.995Z"
   },
   {
     "id": "waf",
-    "name": "waf",
+    "name": "Web 应用防火墙 (WAF)",
     "categoryId": "app-security",
     "tags": [],
-    "description": "",
+    "description": "专注保护 Web 服务与 API，过滤恶意的 HTTP/HTTPS 流量，是防御 OWASP Top 10 威胁的第一道防线。",
     "difficulty": "low",
     "path": "docs/network-app-defense/waf.md",
     "coreFunction": "详情请查看内部文档",
@@ -623,15 +623,15 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.485Z",
-    "updatedAt": "2026-04-22T13:49:46.485Z"
+    "createdAt": "2026-04-22T14:21:54.996Z",
+    "updatedAt": "2026-04-22T14:21:54.996Z"
   },
   {
     "id": "透明代理_手把手教程",
-    "name": "透明代理_手把手教程",
+    "name": "咋让电脑所有流量都走代理？（小白友好版·注解版）",
     "categoryId": "network-concealment",
     "tags": [],
-    "description": "",
+    "description": "- 你开了个梯子，浏览器能翻墙了。",
     "difficulty": "low",
     "path": "02_网络隐匿/透明代理_手把手教程.md",
     "coreFunction": "详情请查看内部文档",
@@ -642,8 +642,8 @@ export const generatedTechItems: TechItem[] = [
     "practiceSteps": [],
     "resources": [],
     "relatedTechIds": [],
-    "createdAt": "2026-04-22T13:49:46.486Z",
-    "updatedAt": "2026-04-22T13:49:46.486Z"
+    "createdAt": "2026-04-22T14:21:54.996Z",
+    "updatedAt": "2026-04-22T14:21:54.996Z"
   },
   {
     "id": "隐匿_透明代理-tproxy实战",
