@@ -8,7 +8,7 @@ import { MyLearning } from './pages/MyLearning';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/PRD">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
