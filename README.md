@@ -82,4 +82,6 @@
    生成的 \`cyber-knowledge-base-md.zip\` 按照分类层级打包了所有的 Markdown 文档。每个 \`.md\` 文件顶部都包含 \`Frontmatter\` 元数据（id、name、category、tags 等），可供 Docusaurus、Obsidian 或 Agent 文档处理器解析并构建静态网站或向量数据库。
 
 ## 部署配置
-项目已包含 \`vercel.json\`，可以直接推送至 GitHub 并连接到 Vercel 进行一键部署，所有的 React Router 路由刷新问题均已在配置中解决（Rewrites \`/*\` 到 \`/index.html\`）。
+项目已配置了 GitHub Actions，可以直接通过 GitHub Pages 进行部署。所有的 React Router 路由刷新问题均已在配置中解决（打包时生成 `404.html` 保证 SPA 路由正常跳转）。
+
+在 GitHub 仓库设置中，找到 **Pages**，将 **Build and deployment** 下的 **Source** 设置为 **GitHub Actions** 即可自动部署。
