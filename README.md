@@ -85,3 +85,16 @@
 项目已配置了 GitHub Actions，可以直接通过 GitHub Pages 进行部署。所有的 React Router 路由刷新问题均已在配置中解决（打包时生成 `404.html` 保证 SPA 路由正常跳转）。
 
 在 GitHub 仓库设置中，找到 **Pages**，将 **Build and deployment** 下的 **Source** 设置为 **GitHub Actions** 即可自动部署。
+
+## 贡献指南
+
+欢迎任何形式的贡献！如果您有新的安全防御技术、工具推荐或是更好的可视化想法，请：
+1. Fork 本仓库
+2. 创建您的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交您的更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启一个 Pull Request
+
+## 开源协议
+
+本项目采用 MIT 协议开源 - 详情请查看 [LICENSE](LICENSE) 文件。
