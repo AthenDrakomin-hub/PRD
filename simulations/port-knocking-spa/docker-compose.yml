@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  spa-gateway:
+    image: alpine
+    # 这里我们使用一个简单的 alpine 配合 nc / netstat 模拟 SPA 守护进程
+    command: >
+      sh -c "
+        apk add --no-cache iptables tcpdump nmap ncat &&
+        echo '[KForge SPA] 正在关闭所有 22 端口入站请求 (隐身模式)' &&
+        # 实际生产中应配置 iptables DROP，此处模拟监听服务不可见
+        echo '[KForge SPA] 等待合法 HMAC 签名敲门包...' &&
+        while true; do 
+          nc -l -p 62201 > /tmp/knock;
+          if grep -q 'KFORGE_AUTH_KEY' /tmp/knock; then
+            echo '[KForge SPA] 收到合法敲门包！限时开放 22 端口...'
+            # 模拟开启 22 端口
+            nc -l -p 22 -e echo 'SSH-2.0-OpenSSH_8.2p1' &
+            sleep 5
+            killall nc
+          fi
+        done
+      "
+    ports:
+      - "${PUBLIC_PORT:-2222}:22"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
+
+  attacker:
+    image: alpine
+    command: tail -f /dev/null
+    depends_on:
+      - spa-gateway

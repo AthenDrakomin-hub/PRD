@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  # 高交互蜜罐容器
+  honeypot:
+    image: cowrie/cowrie:latest
+    ports:
+      - "${PUBLIC_PORT:-2222}:2222"
+    environment:
+      # 将所有密码都判定为"登录成功"以诱导黑客输入攻击指令
+      - COWRIE_AUTH_CLASS=AuthRandom
+    volumes:
+      # 持久化黑客下载的木马样本和击键日志
+      - ./config/cowrie.cfg:/cowrie/cowrie-git/etc/cowrie.cfg
+      - ./logs:/cowrie/cowrie-git/var/log/cowrie
+      - ./downloads:/cowrie/cowrie-git/var/lib/cowrie/downloads
+    restart: unless-stopped
+
+  attacker:
+    image: alpine/openssh
+    command: tail -f /dev/null
+    depends_on:
+      - honeypot

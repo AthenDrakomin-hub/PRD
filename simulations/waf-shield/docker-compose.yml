@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    ports:
+      - "${PUBLIC_PORT:-8080}:80"
+    environment:
+      # ModSecurity 核心参数
+      - SEC_RULE_ENGINE=On
+      - SEC_PRCE_LOG_LEVEL=1
+      # 反向代理目标
+      - BACKEND=http://${TARGET_HOST:-host.docker.internal}:${TARGET_PORT:-3000}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  attacker:
+    image: alpine/curl
+    command: tail -f /dev/null
+    depends_on:
+      - waf
