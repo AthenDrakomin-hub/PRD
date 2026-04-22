@@ -5,7 +5,7 @@ import { categories, techItems } from '../../data';
 export const TechTree: React.FC = () => {
   const treeData = useMemo(() => {
     return {
-      name: '网络安全\n防御体系',
+      name: 'KForge | 墟\n知识锻造体系',
       itemStyle: { color: '#F59E0B' }, // 金色
       symbolSize: 20,
       children: categories.map((cat) => ({
@@ -84,8 +84,8 @@ export const TechTree: React.FC = () => {
     <div className="space-y-6 h-[calc(100vh-8rem)]">
       <header className="bg-dark-card border border-dark-border p-6 rounded-xl flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-white mb-2">安全防御体系科技树</h1>
-          <p className="text-gray-400">支持鼠标拖拽与滚轮缩放，节点悬浮可查看简要说明。</p>
+          <h1 className="text-2xl font-bold text-white mb-2">知识锻造科技树</h1>
+          <p className="text-gray-400">用树状结构组织你的知识材料：缩放、拖拽、悬浮查看。</p>
         </div>
       </header>
 

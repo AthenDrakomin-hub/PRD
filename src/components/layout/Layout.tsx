@@ -13,7 +13,7 @@ export const Layout: React.FC = () => {
         </div>
       </main>
       <footer className="border-t border-dark-border bg-dark-card py-6 text-center text-sm text-gray-500">
-        <p>© {new Date().getFullYear()} CyberDefense Visual Learning Knowledge Base. Designed for Human & AI Agent.</p>
+        <p>© {new Date().getFullYear()} KForge | 墟 · 在废墟中锻造知识，在暗处淬炼锋芒。</p>
       </footer>
     </div>
   );

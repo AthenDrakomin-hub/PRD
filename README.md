@@ -1,12 +1,14 @@
-# 网络安全防御技术可视化学习知识库
+# KForge | 墟
 
-本项目不仅是一个供人类用户浏览、学习、记录进度的可视化平台，更是一个**可扩展、可导出、可直接喂给 AI Agent（如 OpenClaw）的结构化知识库**。
+KForge | 墟 是一个面向个人/团队的“知识锻造库”：用可视化界面梳理体系，用结构化数据沉淀内容，并支持一键导出为 AI Agent 可直接摄取的语料包。
+
+一句话：在废墟中锻造知识，在暗处淬炼锋芒。
 
 ## 核心设计理念
-- **可视化学习界面**：用户通过高颜值的 Web 界面浏览四大分类、防御体系科技树、进阶路线图，并管理自己的学习进度。
-- **结构化数据层**：所有的知识内容（分类、技术点、学习路径）以标准化的 JSON Schema 存储在 `src/data/` 目录中，与 UI 组件完全解耦。
-- **高可扩展架构**：新增技术点、修改路线图只需修改数据文件，无需改动任何 UI 逻辑，组件将自动根据数据生成对应的卡片、树状图和流程图。
-- **AI Agent 友好导出**：支持一键导出为 `JSON` 或 `Markdown ZIP` 压缩包，直接可作为语料库供大语言模型或 Agent 使用。
+- 可视化学习：分类卡片、科技树、学习路径、个人进度与笔记
+- 数据与 UI 解耦：核心知识以 TypeScript 结构化数据存储在 `src/data/`
+- 高扩展：新增内容只改数据文件，页面自动更新
+- AI-Ready 导出：一键导出 JSON / Markdown ZIP，便于 RAG 与 Agent 体系接入
 
 ## 技术栈
 - **前端框架**: React 18 + TypeScript + Vite
@@ -77,9 +79,9 @@
 在平台的首页或导航栏右上角，点击 **“导出知识库”** 按钮。
 
 1. **导出为 JSON**:
-   生成的 \`cyber-knowledge-base.json\` 包含平台内所有的分类、技术点和学习路径。您可以直接通过 HTTP 请求将其注入到诸如 OpenClaw 的 knowledge 插件中，实现 Agent 的实时检索增强（RAG）。
+   生成的 `kforge-knowledge-base.json` 包含 `meta(品牌信息)`、所有分类、技术点、学习路径以及你的学习进度/笔记，可直接作为 RAG 语料或 Agent 输入。
 2. **导出为 Markdown**:
-   生成的 \`cyber-knowledge-base-md.zip\` 按照分类层级打包了所有的 Markdown 文档。每个 \`.md\` 文件顶部都包含 \`Frontmatter\` 元数据（id、name、category、tags 等），可供 Docusaurus、Obsidian 或 Agent 文档处理器解析并构建静态网站或向量数据库。
+   生成的 `kforge-knowledge-base-md.zip` 按分类层级打包所有 Markdown 文档，并额外包含根目录 `README.md`（品牌与说明）。每个 `.md` 文件顶部包含 `Frontmatter`（含 project/id/category/tags 等），便于被 AI Agent/Obsidian/静态站点解析。
 
 ## 部署配置
 项目已配置了 GitHub Actions，可以直接通过 GitHub Pages 进行部署。所有的 React Router 路由刷新问题均已在配置中解决（打包时生成 `404.html` 保证 SPA 路由正常跳转）。

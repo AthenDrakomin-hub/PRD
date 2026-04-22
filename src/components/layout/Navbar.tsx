@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldAlert, Download, FileJson, FileText, Menu, X } from 'lucide-react';
+import { Download, FileJson, FileText, Menu, X } from 'lucide-react';
 import { categories, techItems, learningPath } from '../../data';
 import { useStore } from '../../store/useStore';
 import JSZip from 'jszip';
@@ -10,21 +10,34 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showExport, setShowExport] = useState(false);
   const userProgress = useStore((state) => state.userProgress);
+  const brandName = 'KForge | 墟';
+  const tagline = '在废墟中锻造知识，在暗处淬炼锋芒。';
+  const logoUrl = `${import.meta.env.BASE_URL}logo.svg`;
 
   const handleExportJSON = () => {
     const data = {
+      meta: {
+        brand: brandName,
+        tagline,
+        exportedAt: new Date().toISOString()
+      },
       categories,
       techItems,
       learningPath,
       userProgress
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    saveAs(blob, 'cyber-knowledge-base.json');
+    saveAs(blob, 'kforge-knowledge-base.json');
     setShowExport(false);
   };
 
   const handleExportMarkdown = async () => {
     const zip = new JSZip();
+
+    zip.file(
+      'README.md',
+      `# ${brandName}\n\n${tagline}\n\n本压缩包由 KForge 导出生成。每个技术点为独立 Markdown 文件，包含可被 AI Agent 直接摄取的结构化章节。\n`
+    );
     
     categories.forEach(cat => {
       const catFolder = zip.folder(cat.name);
@@ -33,6 +46,7 @@ export const Navbar: React.FC = () => {
       const items = techItems.filter(item => item.categoryId === cat.id);
       items.forEach(item => {
         const mdContent = `---
+project: ${brandName}
 id: ${item.id}
 name: ${item.name}
 category: ${cat.name}
@@ -67,7 +81,7 @@ ${item.resources.map(r => '- [' + r.title + '](' + r.url + ')').join('\n')}
     });
 
     const content = await zip.generateAsync({ type: 'blob' });
-    saveAs(content, 'cyber-knowledge-base-md.zip');
+    saveAs(content, 'kforge-knowledge-base-md.zip');
     setShowExport(false);
   };
 
@@ -84,9 +98,10 @@ ${item.resources.map(r => '- [' + r.title + '](' + r.url + ')').join('\n')}
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center gap-2">
-              <ShieldAlert className="w-8 h-8 text-cyber-accent" />
-              <span className="font-bold text-xl text-white tracking-wider hidden sm:block">
-                Cyber<span className="text-cyber-accent">Defense</span>
+              <img src={logoUrl} alt={brandName} className="w-9 h-9" />
+              <span className="hidden sm:block leading-none">
+                <span className="block font-extrabold text-lg text-white tracking-wide">KForge</span>
+                <span className="block text-cyber-accent text-sm ml-6 -mt-0.5 font-medium">墟</span>
               </span>
             </Link>
           </div>

@@ -15,6 +15,17 @@ interface AppState {
   resetProgress: () => void;
 }
 
+const legacyStorageKey = ['cyber', 'knowledge', 'base', 'storage'].join('-');
+const storageKey = 'kforge-storage';
+
+try {
+  const hasNew = typeof localStorage !== 'undefined' && localStorage.getItem(storageKey);
+  const hasOld = typeof localStorage !== 'undefined' && localStorage.getItem(legacyStorageKey);
+  if (!hasNew && hasOld) {
+    localStorage.setItem(storageKey, hasOld);
+  }
+} catch {}
+
 export const useStore = create<AppState>()(
   persist(
     (set) => ({
@@ -44,7 +55,7 @@ export const useStore = create<AppState>()(
       resetProgress: () => set({ userProgress: {} }),
     }),
     {
-      name: 'cyber-knowledge-base-storage',
+      name: storageKey,
     }
   )
 );

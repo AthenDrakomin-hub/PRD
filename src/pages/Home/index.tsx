@@ -13,6 +13,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export const Home: React.FC = () => {
   const [scenario, setScenario] = useState('ddos');
+  const logoUrl = `${import.meta.env.BASE_URL}logo.svg`;
 
   const getSimulatorData = () => {
     switch (scenario) {
@@ -46,16 +47,21 @@ export const Home: React.FC = () => {
 
   return (
     <div className="space-y-12">
-      <header className="text-center space-y-4 py-12">
-        <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-          网络安全防御技术 <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-accent to-blue-500">
-            可视化知识库
-          </span>
-        </h1>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          专为人类与 AI Agent 打造的结构化安全语料。从原理到实践，构建全方位防御体系视角。
-        </p>
+      <header className="text-center space-y-6 py-12">
+        <div className="flex flex-col items-center gap-5">
+          <div className="relative">
+            <img src={logoUrl} alt="KForge | 墟" className="w-20 h-20" />
+            <div className="absolute inset-0 blur-xl opacity-30 bg-cyber-accent rounded-full"></div>
+          </div>
+          <div className="space-y-3">
+            <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
+              KForge | 墟 — 个人知识锻造库
+            </h1>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              在废墟中锻造知识，在暗处淬炼锋芒。
+            </p>
+          </div>
+        </div>
       </header>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
