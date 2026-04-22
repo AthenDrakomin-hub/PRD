@@ -7,9 +7,13 @@
     "packages/*"
   ],
   "scripts": {
+    "dev:admin": "npm run dev --workspace=@kforge/admin",
+    "dev:h5": "npm run dev --workspace=@kforge/h5-builder",
     "dev:daemon": "npm run dev --workspace=@kforge/daemon",
     "build:core": "npm run build --workspace=@kforge/core",
     "build:daemon": "npm run build --workspace=@kforge/daemon",
+    "build:admin": "npm run build --workspace=@kforge/admin",
+    "build:h5": "npm run build --workspace=@kforge/h5-builder",
     "export": "node scripts/export-knowledge.js"
   },
   "devDependencies": {

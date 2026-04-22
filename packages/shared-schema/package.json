@@ -1,0 +1,13 @@
+{
+  "name": "@kforge/shared-schema",
+  "version": "1.0.0",
+  "description": "Shared JSON DSL and TypeScript interfaces for KForge SaaS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
