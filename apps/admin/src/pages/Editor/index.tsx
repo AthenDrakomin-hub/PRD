@@ -15,7 +15,7 @@ import '@xyflow/react/dist/style.css';
 import { Sidebar } from './components/Sidebar';
 import { ConfigPanel } from './components/ConfigPanel';
 import { SkillNode } from './components/SkillNode';
-import { KForgePluginDSL } from '@kforge/shared-schema';
+import { KForgeMembershipDSL } from '@kforge/shared-schema';
 import { Play, Download, Save } from 'lucide-react';
 
 const nodeTypes = {
@@ -34,8 +34,8 @@ export const CanvasEditor = () => {
 
   // 全局商业化配置状态
   const [globalConfig, setGlobalConfig] = useState({
-    marketing: { title: '', description: '', features: [], themeColor: '#00E5FF' },
-    payment: { priceAmount: 0, currency: 'USDT-TRC20', walletAddress: '', model: 'one-time' }
+    platformMarketing: { title: '加入 KForge 全球防御网络', subtitle: '解锁无限制的安全节点访问权限，一键构建零信任架构。', themeColor: '#00E5FF' },
+    membership: { tier: 'Enterprise', monthlyPriceUSDT: 299, walletAddress: '', maxActiveNodes: 10 }
   });
 
   const onConnect = useCallback(
@@ -95,12 +95,12 @@ export const CanvasEditor = () => {
 
   // 生成符合 @kforge/shared-schema 标准的 JSON
   const handleExportDSL = () => {
-    const dsl: KForgePluginDSL = {
-      id: `plugin-${Date.now()}`,
+    const dsl: KForgeMembershipDSL = {
+      tenantId: `tenant-${Date.now()}`,
       version: '1.0.0',
-      marketing: globalConfig.marketing as any,
-      payment: globalConfig.payment as any,
-      workflow: {
+      platformMarketing: globalConfig.platformMarketing as any,
+      membership: globalConfig.membership as any,
+      topology: {
         nodes: nodes.map(n => ({
           id: n.id,
           skillId: n.data.skillId as string,
@@ -117,14 +117,14 @@ export const CanvasEditor = () => {
       updatedAt: new Date().toISOString(),
     };
 
-    console.log('Generated DSL:', dsl);
+    console.log('Generated Membership DSL:', dsl);
     
     // 模拟下载
     const blob = new Blob([JSON.stringify(dsl, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `kforge-plugin-${Date.now()}.json`;
+    link.download = `kforge-membership-config-${Date.now()}.json`;
     link.click();
   };
 
@@ -143,7 +143,7 @@ export const CanvasEditor = () => {
             onClick={handleExportDSL}
             className="flex items-center gap-2 px-4 py-1.5 text-sm font-medium bg-cyber-accent text-dark-bg hover:bg-[#00e5ff] transition-colors rounded-lg shadow-[0_0_10px_rgba(0,229,255,0.2)]"
           >
-            <Save className="w-4 h-4" /> 生成插件发布 (DSL)
+            <Save className="w-4 h-4" /> 更新租户防御拓扑
           </button>
         </div>
       </header>

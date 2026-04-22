@@ -5,38 +5,40 @@ import { QRCodeSVG } from 'qrcode.react';
 import { Shield, Zap, Lock, CheckCircle2, ChevronRight, Copy, Check, DollarSign } from 'lucide-react';
 import Image from 'next/image';
 
-// 模拟从 Daemon 接口拉取到的插件 DSL 数据
+// 模拟从 Daemon 接口拉取到的平台级会员 DSL 数据
 const mockDSL = {
-  id: "plugin-1711234567",
+  tenantId: "tenant-1711234567",
   version: "1.0.0",
-  marketing: {
-    title: "一键防御 DDoS 与流量清洗",
-    description: "无需修改业务代码，一键部署前置隐匿代理盾牌，支持智能 CC 识别、恶意流量清洗及后端真实 IP 隐匿。",
-    features: [
-      "10Gbps+ 抗 D 能力，智能限流",
-      "真实后端 IP 彻底隐匿，防止源站被扫",
-      "消除指纹特征 (Server, X-Powered-By)",
-      "分钟级无缝接入，业务零停机"
-    ],
+  platformMarketing: {
+    title: "KForge 全球安全防御网络",
+    subtitle: "解锁无限制的安全节点访问权限，一键构建零信任架构。单个订阅，涵盖 DDoS、WAF、SPA 隐身及高交互蜜罐全量武器库。",
     themeColor: "#00E5FF",
   },
-  payment: {
-    priceAmount: 49.9,
-    currency: "USDT-TRC20",
+  membership: {
+    tier: "Enterprise",
+    monthlyPriceUSDT: 299,
     walletAddress: "TYuLhE2Ym4Q7Z9u5B1p5A1u7G8z5Y1w8G5",
-    model: "subscription"
+    maxActiveNodes: 10
   }
 };
 
-export default function PluginLandingPage() {
+const FEATURES = [
+  "10Gbps+ 抗D盾与 HTTP CC 智能限流",
+  "OWASP 核心规则集 (CRS) WAF 拦截",
+  "单包授权 (SPA) 核心端口绝对隐身",
+  "高交互蜜罐部署与 TTPs 实时溯源",
+  "CLI 命令行一键热拔插部署"
+];
+
+export default function PlatformLandingPage() {
   const [showCheckout, setShowCheckout] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
 
-  const { marketing, payment } = mockDSL;
+  const { platformMarketing, membership } = mockDSL;
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(payment.walletAddress);
+    navigator.clipboard.writeText(membership.walletAddress);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -69,13 +71,13 @@ export default function PluginLandingPage() {
         <section className="px-6 py-8 relative z-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/30 text-[#00E5FF] text-xs font-bold mb-6">
             <Zap className="w-3.5 h-3.5" />
-            官方认证安全插件
+            {membership.tier} Membership
           </div>
           <h1 className="text-3xl font-extrabold text-white leading-tight mb-4 tracking-wide">
-            {marketing.title}
+            {platformMarketing.title}
           </h1>
           <p className="text-gray-400 leading-relaxed text-sm">
-            {marketing.description}
+            {platformMarketing.subtitle}
           </p>
         </section>
 
@@ -109,9 +111,9 @@ export default function PluginLandingPage() {
 
         {/* Features */}
         <section className="px-6 py-8">
-          <h2 className="text-sm font-bold text-white mb-4 uppercase tracking-widest text-gray-500">核心能力矩阵</h2>
+          <h2 className="text-sm font-bold text-white mb-4 uppercase tracking-widest text-gray-500">无限火力防御矩阵</h2>
           <div className="space-y-4">
-            {marketing.features.map((feature, idx) => (
+            {FEATURES.map((feature, idx) => (
               <div key={idx} className="flex items-start gap-3">
                 <div className="mt-0.5 p-1 rounded bg-[#00E5FF]/10">
                   <CheckCircle2 className="w-4 h-4 text-[#00E5FF]" />
@@ -128,10 +130,9 @@ export default function PluginLandingPage() {
             onClick={() => setShowCheckout(true)}
             className="w-full bg-[#00E5FF] hover:bg-[#00c8e6] text-[#0B1021] font-extrabold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(0,229,255,0.3)] active:scale-95"
           >
-            获取插件接入凭证
+            开通 {membership.tier} 会员网络
             <span className="bg-[#0B1021]/20 px-2 py-0.5 rounded-md text-xs ml-2 flex items-center">
-              <DollarSign className="w-3 h-3" /> {payment.priceAmount} {payment.currency === 'USDT-TRC20' ? 'USDT' : payment.currency}
-              {payment.model === 'subscription' && '/月'}
+              <DollarSign className="w-3 h-3" /> {membership.monthlyPriceUSDT} USDT / 月
             </span>
           </button>
         </div>
@@ -157,13 +158,13 @@ export default function PluginLandingPage() {
               <div className="bg-[#0D1117] border border-gray-800 rounded-xl p-6 flex flex-col items-center justify-center mb-6">
                 <p className="text-sm text-gray-400 mb-4 text-center">
                   请使用钱包扫码或复制地址，支付准确金额：<br/>
-                  <span className="text-2xl font-bold text-white mt-1 block">{payment.priceAmount} <span className="text-[#00E5FF] text-lg">USDT</span></span>
+                  <span className="text-2xl font-bold text-white mt-1 block">{membership.monthlyPriceUSDT} <span className="text-[#00E5FF] text-lg">USDT</span></span>
                   <span className="text-xs text-gray-500">(仅支持 TRC20 网络)</span>
                 </p>
                 
                 <div className="bg-white p-3 rounded-xl mb-4">
                   <QRCodeSVG 
-                    value={`tron:${payment.walletAddress}?amount=${payment.priceAmount}`} 
+                    value={`tron:${membership.walletAddress}?amount=${membership.monthlyPriceUSDT}`} 
                     size={160} 
                     level="H"
                     includeMargin={false}
@@ -176,7 +177,7 @@ export default function PluginLandingPage() {
                     <input 
                       type="text" 
                       readOnly 
-                      value={payment.walletAddress}
+                      value={membership.walletAddress}
                       className="bg-transparent text-xs text-gray-300 px-3 py-3 w-full font-mono outline-none"
                     />
                     <button 

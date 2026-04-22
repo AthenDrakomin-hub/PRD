@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Node } from '@xyflow/react';
-import { Settings, Wallet, DollarSign, Send } from 'lucide-react';
+import { Settings, Wallet, Crown, Globe } from 'lucide-react';
 
 interface ConfigPanelProps {
   selectedNode: Node | null;
   onUpdateNode: (id: string, newData: any) => void;
   globalConfig: {
-    marketing: any;
-    payment: any;
+    platformMarketing: any;
+    membership: any;
   };
   onUpdateGlobalConfig: (newConfig: any) => void;
 }
@@ -26,17 +26,17 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
     onUpdateNode(selectedNode.id, { ...selectedNode.data, config: newConfig });
   };
 
-  const handlePaymentChange = (key: string, value: any) => {
+  const handleMembershipChange = (key: string, value: any) => {
     onUpdateGlobalConfig({
       ...globalConfig,
-      payment: { ...globalConfig.payment, [key]: value }
+      membership: { ...globalConfig.membership, [key]: value }
     });
   };
 
   const handleMarketingChange = (key: string, value: any) => {
     onUpdateGlobalConfig({
       ...globalConfig,
-      marketing: { ...globalConfig.marketing, [key]: value }
+      platformMarketing: { ...globalConfig.platformMarketing, [key]: value }
     });
   };
 
@@ -53,7 +53,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
           onClick={() => setActiveTab('global')}
           className={`flex-1 py-4 text-sm font-bold text-center border-b-2 transition-all ${activeTab === 'global' ? 'border-purple-500 text-purple-400 bg-dark-bg/50' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
         >
-          发布与收款
+          平台全局设置
         </button>
       </div>
 
@@ -63,7 +63,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             {!selectedNode ? (
               <div className="text-center text-gray-500 mt-10">
                 <Settings className="w-10 h-10 mx-auto mb-3 opacity-20" />
-                <p className="text-sm">请在画布中选中一个节点进行配置</p>
+                <p className="text-sm">选中节点以配置属性参数</p>
               </div>
             ) : (
               <div className="animate-in fade-in slide-in-from-right-4 duration-300">
@@ -138,68 +138,77 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             {/* H5 营销配置 */}
             <div className="space-y-4">
               <h3 className="flex items-center gap-2 text-white font-bold border-b border-dark-border pb-2">
-                <Send className="w-4 h-4 text-blue-400" /> H5 营销页设置
+                <Globe className="w-4 h-4 text-blue-400" /> KForge 全球防御网络
               </h3>
               <div>
-                <label className="block text-xs font-bold text-gray-400 mb-1.5">落地页大标题</label>
+                <label className="block text-xs font-bold text-gray-400 mb-1.5">平台级愿景标题</label>
                 <input 
                   type="text" 
-                  value={globalConfig.marketing.title || ''}
+                  value={globalConfig.platformMarketing.title || ''}
                   onChange={(e) => handleMarketingChange('title', e.target.value)}
-                  placeholder="例如：一键部署企业级高防节点"
+                  placeholder="例如：加入 KForge 高级防御生态"
                   className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-400"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-400 mb-1.5">核心卖点描述</label>
+                <label className="block text-xs font-bold text-gray-400 mb-1.5">核心理念描述</label>
                 <textarea 
-                  value={globalConfig.marketing.description || ''}
-                  onChange={(e) => handleMarketingChange('description', e.target.value)}
-                  placeholder="用一句话打动客户..."
+                  value={globalConfig.platformMarketing.subtitle || ''}
+                  onChange={(e) => handleMarketingChange('subtitle', e.target.value)}
+                  placeholder="获取无限制的防御节点访问权限，打造您的专属零信任架构..."
                   className="w-full h-24 bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-400 resize-none"
                 />
               </div>
             </div>
 
-            {/* 收款配置 */}
+            {/* 会员订阅配置 */}
             <div className="space-y-4">
               <h3 className="flex items-center gap-2 text-white font-bold border-b border-dark-border pb-2">
-                <Wallet className="w-4 h-4 text-green-400" /> USDT-TRC20 收款配置
+                <Crown className="w-4 h-4 text-yellow-400" /> Web3 订阅会员设置
               </h3>
               <div>
-                <label className="block text-xs font-bold text-gray-400 mb-1.5">定价 (USDT)</label>
+                <label className="block text-xs font-bold text-gray-400 mb-1.5">会员等级 (Tier)</label>
+                <select 
+                  value={globalConfig.membership.tier || 'Enterprise'}
+                  onChange={(e) => handleMembershipChange('tier', e.target.value)}
+                  className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400"
+                >
+                  <option value="Pro">Pro (专业版)</option>
+                  <option value="Enterprise">Enterprise (企业版)</option>
+                  <option value="Web3-Native">Web3-Native (去中心化版)</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-gray-400 mb-1.5">全平台包月订阅费 (USDT)</label>
                 <div className="relative">
-                  <DollarSign className="absolute left-3 top-2 w-4 h-4 text-gray-500" />
+                  <Wallet className="absolute left-3 top-2 w-4 h-4 text-gray-500" />
                   <input 
                     type="number" 
-                    value={globalConfig.payment.priceAmount || ''}
-                    onChange={(e) => handlePaymentChange('priceAmount', Number(e.target.value))}
-                    placeholder="99.9"
-                    className="w-full bg-dark-bg border border-dark-border rounded pl-9 pr-3 py-2 text-sm text-white focus:outline-none focus:border-green-400"
+                    value={globalConfig.membership.monthlyPriceUSDT || ''}
+                    onChange={(e) => handleMembershipChange('monthlyPriceUSDT', Number(e.target.value))}
+                    placeholder="999"
+                    className="w-full bg-dark-bg border border-dark-border rounded pl-9 pr-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-400 mb-1.5">收款钱包地址 (TRC20)</label>
+                <label className="block text-xs font-bold text-gray-400 mb-1.5">最大并发防御节点数</label>
                 <input 
-                  type="text" 
-                  value={globalConfig.payment.walletAddress || ''}
-                  onChange={(e) => handlePaymentChange('walletAddress', e.target.value)}
-                  placeholder="T..."
-                  className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm font-mono text-green-400 focus:outline-none focus:border-green-400"
+                  type="number" 
+                  value={globalConfig.membership.maxActiveNodes || 10}
+                  onChange={(e) => handleMembershipChange('maxActiveNodes', Number(e.target.value))}
+                  className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-400 mb-1.5">商业模式</label>
-                <select 
-                  value={globalConfig.payment.model || 'one-time'}
-                  onChange={(e) => handlePaymentChange('model', e.target.value)}
-                  className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-green-400"
-                >
-                  <option value="one-time">一次性买断 (One-Time)</option>
-                  <option value="subscription">包月订阅 (Subscription)</option>
-                  <option value="pay-per-use">按次计费 (Pay-Per-Use)</option>
-                </select>
+                <label className="block text-xs font-bold text-gray-400 mb-1.5">平台收款合约/钱包 (TRC20)</label>
+                <input 
+                  type="text" 
+                  value={globalConfig.membership.walletAddress || ''}
+                  onChange={(e) => handleMembershipChange('walletAddress', e.target.value)}
+                  placeholder="T..."
+                  className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm font-mono text-green-400 focus:outline-none focus:border-green-400"
+                />
               </div>
             </div>
 
@@ -209,3 +218,4 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
     </aside>
   );
 };
+
