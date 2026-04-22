@@ -5,7 +5,8 @@
   "type": "module",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "@kforge/cli"
   ],
   "scripts": {
     "dev:admin": "npm run dev --workspace=@kforge/admin",

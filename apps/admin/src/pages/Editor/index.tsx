@@ -129,13 +129,11 @@ export const CanvasEditor = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#0D1117]">
-      {/* 顶部导航栏 */}
-      <header className="h-14 border-b border-dark-border bg-dark-card flex items-center justify-between px-6 shrink-0">
+    <div className="flex flex-col h-full bg-[#0D1117]">
+      {/* 顶部导航栏 (现已移到全局 App.tsx) */}
+      <header className="h-12 border-b border-dark-border bg-dark-bg flex items-center justify-between px-6 shrink-0">
         <div className="flex items-center gap-3">
-          <img src="/logo.svg" alt="KForge Logo" className="h-6" />
-          <div className="h-4 w-px bg-dark-border mx-2"></div>
-          <span className="text-sm font-bold text-gray-300 tracking-wider">插件编排工作台</span>
+          <span className="text-sm font-bold text-gray-400 tracking-wider">Visual Editor</span>
         </div>
         <div className="flex items-center gap-3">
           <button className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-dark-bg">

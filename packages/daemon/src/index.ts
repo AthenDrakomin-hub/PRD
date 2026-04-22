@@ -17,10 +17,48 @@ const activeSkills = new Map<string, SkillRunner>();
 
 const SIMULATIONS_DIR = path.join(__dirname, '../../../simulations');
 
+// =============== 🔥 火焰一：Web3 TRON 链上监听服务 ===============
+// 模拟监听波场网络上某个钱包地址的收款记录
+// 在实际生产中，这里会定时请求 https://api.trongrid.io/v1/accounts/{address}/transactions/trc20
+app.get('/api/payment/verify', async (req, res) => {
+  const { wallet, amount } = req.query;
+  
+  if (!wallet || !amount) {
+    return res.status(400).json({ error: 'Missing wallet address or amount' });
+  }
+
+  // 随机延迟模拟区块链网络确认时间 (1-3秒)
+  const delay = Math.floor(Math.random() * 2000) + 1000;
+  
+  setTimeout(() => {
+    // 模拟：有 80% 的概率查到了这笔交易并确认成功
+    const isSuccess = Math.random() > 0.2;
+    
+    if (isSuccess) {
+      // 生成一个专属的接入 Token
+      const accessToken = `kf_live_${Math.random().toString(36).substr(2, 9)}_${Date.now()}`;
+      res.json({
+        status: 'success',
+        message: 'Transaction confirmed on TRON network.',
+        data: {
+          accessToken,
+          txHash: `0x${Math.random().toString(16).substr(2, 64)}`
+        }
+      });
+    } else {
+      res.json({
+        status: 'pending',
+        message: 'Transaction not found or waiting for block confirmation.'
+      });
+    }
+  }, delay);
+});
+// =================================================================
+
 // API to trigger a skill
 app.post('/api/skills/:skillId/execute', async (req, res) => {
   const { skillId } = req.params;
-  
+
   if (activeSkills.has(skillId)) {
     return res.status(400).json({ error: 'Skill is already running' });
   }
@@ -66,7 +104,7 @@ app.post('/api/skills/:skillId/execute', async (req, res) => {
 app.post('/api/skills/:skillId/stop', async (req, res) => {
   const { skillId } = req.params;
   const runner = activeSkills.get(skillId);
-  
+
   if (!runner) {
     return res.status(404).json({ error: 'Skill is not running' });
   }
