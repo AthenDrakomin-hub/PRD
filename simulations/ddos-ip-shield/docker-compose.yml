@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # 核心防御节点：IP隐匿与流量清洗盾牌
+  shield:
+    image: nginx:alpine
+    ports:
+      # 动态映射外部请求端口，默认 8080
+      - "${PUBLIC_PORT:-8080}:80"
+    volumes:
+      - ./config/nginx.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      # 动态指向宿主服务器内部真实受保护的服务
+      - TARGET_HOST=${TARGET_HOST:-host.docker.internal}
+      - TARGET_PORT=${TARGET_PORT:-3000}
+    extra_hosts:
+      # 允许容器访问宿主机的 localhost
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  # 模拟的黑客攻击者机器（用于演示防御效果）
+  attacker:
+    image: alpine/curl
+    command: tail -f /dev/null
+    depends_on:
+      - shield

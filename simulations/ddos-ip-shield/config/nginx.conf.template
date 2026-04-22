@@ -1,0 +1,26 @@
+# DDoS 防御：限制单个 IP 每秒 5 次请求，超出进入 10 个请求大小的等待队列
+limit_req_zone $binary_remote_addr zone=mylimit:10m rate=5r/s;
+
+server {
+    listen 80;
+    server_name localhost;
+
+    # 核心流量清洗与转发逻辑
+    location / {
+        # 激活限流规则，超过 burst+rate 将返回 429 状态码
+        limit_req zone=mylimit burst=10 nodelay;
+        limit_req_status 429;
+
+        # IP 隐匿：将流量代理至后端真实的服务器 (使用环境变量动态替换)
+        proxy_pass http://${TARGET_HOST}:${TARGET_PORT};
+        
+        # 保留真实请求信息
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        
+        # 隐藏后端真实服务器头信息，防止技术栈探测探测
+        proxy_hide_header X-Powered-By;
+        proxy_hide_header Server;
+    }
+}

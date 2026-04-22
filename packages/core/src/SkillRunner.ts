@@ -9,6 +9,7 @@ export interface SkillOptions {
   skillId: string;
   simulationsDir: string;
   projectName?: string;
+  env?: Record<string, string>; // 支持动态环境变量注入
 }
 
 export class SkillRunner extends EventEmitter {
@@ -43,7 +44,11 @@ export class SkillRunner extends EventEmitter {
       const proc = spawn(command, args, {
         cwd: this.skillDir,
         shell: true,
-        signal: abortSignal
+        signal: abortSignal,
+        env: {
+          ...process.env,
+          ...this.options.env, // 注入动态变量 (例如 PUBLIC_PORT, TARGET_HOST)
+        }
       });
 
       proc.stdout.on('data', (data) => {
