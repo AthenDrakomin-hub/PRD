@@ -1,3 +1,5 @@
+import { traeSoloTechItems } from './categories/ai-dev-tools/trae-solo';
+
 export interface TechItem {
   id: string;
   name: string;
@@ -137,5 +139,6 @@ WAF 工作在 OSI 模型的第七层（应用层）。
     relatedTechIds: ['threat-detection'],
     createdAt: '2023-04-20T00:00:00Z',
     updatedAt: '2023-09-15T00:00:00Z'
-  }
+  },
+  ...traeSoloTechItems
 ];

@@ -7,7 +7,8 @@ const iconMap: Record<string, React.ReactNode> = {
   Shield: <Shield className="w-8 h-8" />,
   Activity: <Activity className="w-8 h-8" />,
   Lock: <Lock className="w-8 h-8" />,
-  Smartphone: <Smartphone className="w-8 h-8" />
+  Smartphone: <Smartphone className="w-8 h-8" />,
+  Zap: <Zap className="w-8 h-8" />
 };
 
 export const Home: React.FC = () => {

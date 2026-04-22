@@ -192,137 +192,15 @@ MFA 结合了知识（密码）、拥有物（手机/硬件 Token）和生物特
 
 #学习资源
 - [YARA 规则编写手册](https://yara.readthedocs.io/)
-- [现代数据安全治理体系建设](https://en.wikipedia.org/wiki/Data_loss_prevention_software)](host-system-defense/dlp.md)\n\n### 新兴与前沿防御理念\n- [零信任架构 (Zero Trust Architecture)
+- [现代数据安全治理体系建设](https://en.wikipedia.org/wiki/Data_loss_prevention_software)](host-system-defense/dlp.md)\n\n### 新兴与前沿防御理念
+- [零信任架构 (Zero Trust Architecture)](emerging-defense/zta.md)
+- [AI/ML 驱动安全与 AI 安全防护](emerging-defense/ai-ml-security.md)
+- [端到端加密 (End-to-End Encryption)](emerging-defense/e2ee.md)
+- [去中心化身份 (Decentralized Identity)](emerging-defense/did.md)
+- [安全访问服务边缘 (SASE)](emerging-defense/sase.md)
 
-#核心作用
-彻底摒弃传统 VPN“内网即安全”的理念，假设网络已被完全攻破，对每一次访问进行无差别的持续验证。
-
-#实现原理
-无论用户身处何地，访问每个企业应用都需经过身份（SSO/MFA）与设备健康度（如补丁状态、杀毒软件是否开启）的动态校验。通过身份感知代理 (IAP) 在用户与具体应用间建立微隧道，拒绝授予对整个子网的访问权限。
-
-#主要防御手段
-- 彻底收缩业务暴露面。
-- 极大提升攻击者在内网横向移动的难度。
-
-#漏洞与局限
-- **Buzzword 泛滥**："零信任"常被厂商滥用为过度营销词汇，导致落地变形。
-- **遗留系统改造难**：强行将缺乏现代认证接口的老旧系统接入 ZTA 成本极高。
-- **IdP 单点故障**：高度依赖集中式身份提供商，IdP 若宕机，全公司将无法工作。
-
-#典型工具
-- **Headscale**: Tailscale 的开源控制端，基于 WireGuard 构建极简 ZTA 组网。
-- **NetBird**: 优秀的开源零信任网络访问 (ZTNA) 平台。
-- **Pomerium**: 基于上下文的开源身份感知代理。
-
-#实践建议
-使用 Headscale 搭建一个点对点 WireGuard 网络，将内网核心服务的 SSH 端口仅暴露给经过授权且已分配专属 Tailscale IP 的节点。
-
-#学习资源
-- [NIST SP 800-207 零信任架构标准](https://csrc.nist.gov/publications/detail/sp/800-207/final)
-- [Tailscale 架构原理解析](https://tailscale.com/blog/how-tailscale-works/)](emerging-defense/zta.md)\n- [AI/ML 驱动安全与 AI 安全防护
-
-#核心作用
-这是一个双刃剑：既利用大语言模型 (LLM) 和机器学习提升防御效率，又要针对 AI 系统本身的脆弱性进行安全加固。
-
-#实现原理
-1. **AI 赋能防御**: 利用大模型自动分析海量告警上下文、生成逆向分析报告、自动化编写 Yara/Suricata 规则。
-2. **保护 AI 本身**: 部署输入/输出护栏 (Guardrails)，利用语义分析过滤提示词注入 (Prompt Injection) 和防止模型生成有害内容或泄露训练隐私。
-
-#主要防御手段
-- 防御针对 LLM 的越狱攻击 (Jailbreak) 和数据投毒。
-- 实现智能自动化的蓝队防御与红队测试。
-
-#漏洞与局限
-- **非确定性风险**：LLM 具有“幻觉”特性，AI 护栏容易出现高误报，或被复杂的逻辑嵌套提示词绕过。
-- **攻击者的 AI 化**：黑客同样在使用 LLM 自动化生成多态恶意软件和极其逼真的钓鱼邮件。
-
-#典型工具
-- **LLM Guard**: 提供针对 LLM 交互的输入/输出安全扫描。
-- **Garak**: 强大的开源 LLM 漏洞与越狱扫描器。
-- **NVIDIA NeMo Guardrails**: 工业级的 LLM 护栏构建工具包。
-
-#实践建议
-部署本地 Ollama 运行一个小型开源模型，在其前端接入 LLM Guard，测试并拦截带有诸如“忽略之前所有指令”的恶意越狱输入。
-
-#学习资源
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Garak GitHub 仓库](https://github.com/leondz/garak)](emerging-defense/ai-ml-security.md)\n- [端到端加密 (End-to-End Encryption)
-
-#核心作用
-确保通信与存储的明文内容仅在合法的终端设备间可解密，中间的服务器节点即使被黑客完全攻破，也只能看到无法破解的密文。
-
-#实现原理
-密钥在通信终端本地生成与安全保存，基于现代椭圆曲线非对称加密（如 X25519）进行安全的密钥交换（如前向安全机制）。服务器仅作为“瞎子”路由转发密文数据流。在 2026 年，抗量子密码学 (PQC) 算法正逐步融入 E2EE 以抵御未来的量子计算机解密威胁。
-
-#主要防御手段
-- 抵御服务提供商（或内鬼）的窃听作恶。
-- 防范网络链路的全局被动监听。
-
-#漏洞与局限
-- **元数据暴露**：E2EE 保护了内容，但无法隐藏元数据 (Metadata，例如“谁在什么时间与谁通信”)。
-- **端点被控**：如果终端设备中了木马（被键盘记录或屏幕截取），加密通道将毫无意义。
-- **身份验证痛点**：若用户未验证对方的公钥指纹，极易遭受中间人替换攻击。
-
-#典型工具
-- **Signal Protocol**: 当今最成熟、被广泛集成的 E2EE 通信协议。
-- **Age**: 现代、安全、极简的开源文件加密利器（完美替代繁琐的 GPG）。
-- **Matrix**: 强调去中心化与端到端加密的通信协议栈。
-
-#实践建议
-废弃复杂的 GPG，使用 `age` 工具在本地生成 X25519 密钥对，尝试加密一个敏感的数据库备份文件，并在另一台拥有对应私钥的机器上进行解密。
-
-#学习资源
-- [Signal 协议官方原理解析](https://signal.org/docs/)
-- [Age 官方文档](https://github.com/FiloSottile/age)](emerging-defense/e2ee.md)\n- [去中心化身份 (Decentralized Identity)
-
-#核心作用
-打破传统互联网巨头对数字身份的垄断，让用户将身份数据完全掌握在自己手中，实现隐私保护下的高信任身份验证。
-
-#实现原理
-用户将个人的身份数据（如护照、学历）安全存储在本地钱包中。当需要验证时，通过区块链或密码学凭证 (Verifiable Credentials, VC) 向服务商进行选择性披露（例如利用零知识证明 ZKP 仅证明“我已满18岁”，而不提供真实的出生日期）。
-
-#主要防御手段
-- 抵御因中心化数据库拖库导致的海量用户隐私泄露。
-- 有效防范身份盗用与数据滥用。
-
-#漏洞与局限
-- **UX 用户体验门槛**：目前的钱包管理对普通用户而言依然不够友好。
-- **私钥丢失灾难**：若用户丢失了最高权限的私钥/助记词，将彻底失去其数字身份且无法找回。
-- **生态与标准化**：大规模商业应用的互操作性普及仍需漫长的时间。
-
-#典型工具
-- **SpruceID**: 提供完善的开源 DID 认证与钱包工具链。
-- **Hyperledger Aries**: 专为创建和使用可验证凭证而生的基础框架。
-- **W3C DID 标准库**: 实现去中心化标识符解析的开发包。
-
-#实践建议
-了解基本的 DID Document JSON 结构，并尝试使用开源工具链在本地签发并验证一张基于 W3C 标准的 Verifiable Credential。
-
-#学习资源
-- [W3C DID 核心规范](https://www.w3.org/TR/did-core/)
-- [去中心化身份与零知识证明技术入门](https://identity.foundation/)](emerging-defense/did.md)\n- [安全访问服务边缘 (SASE)
-
-#核心作用
-将广域网 (SD-WAN) 与云原生安全能力（如 SWG, CASB, ZTNA）深度融合，为随时随地办公的现代企业提供统一的安全网络入口。
-
-#实现原理
-在 SASE 架构中，边缘节点即是安全网关，企业网络不再依赖传统的物理总部边界，而是基于全球骨干网动态构建。流量在离用户最近的 PoP (Point of Presence) 节点就近接入，并在此处完成安全清洗、SSL 审计与零信任访问控制。
-
-#主要防御手段
-- 彻底解决混合办公与多云架构下的网络边界模糊问题。
-- 提供全球一致、低延迟的安全策略管控。
-
-#漏洞与局限
-- **高度商业化与锁定**：架构极其庞大复杂，高度依赖头部安全厂商的基础设施，容易被供应商锁定 (Vendor Lock-in)。
-- **开源生态碎片化**：目前缺乏开箱即用的、能够涵盖完整 SASE 栈的纯开源解决方案。
-
-#典型工具
-- **OpenZiti**: 极具创新的开源项目，可将零信任网络能力直接嵌入应用层 SDK，实现“暗网”级隐蔽。
-- **Nebula**: Slack 开源的高性能 Overlay 组网工具，作为 SASE 底层连接平替方案。
-
-#实践建议
-尝试编译一个集成了 OpenZiti SDK 的 Node.js 客户端应用，实现在宿主机无公网 IP、无任何开放监听端口的情况下，依然能安全访问内网服务。
-
-#学习资源
-- [SASE 架构演进与 Gartner 报告](https://www.gartner.com/)
-- [OpenZiti 官方文档与架构指南](https://openziti.io/)](emerging-defense/sase.md)\n\n\n
+### AI 开发工具 (Trae SOLO)
+- [Agent 模式自主编程](ai-dev-tools/trae-solo/trae-agent-mode.md)
+- [Builder 模式项目生成](ai-dev-tools/trae-solo/trae-builder-mode.md)
+- [MCP 协议扩展集成](ai-dev-tools/trae-solo/trae-mcp-integration.md)
+- [智能上下文感知引擎](ai-dev-tools/trae-solo/trae-context-engine.md)\n\n\n

@@ -1,3 +1,5 @@
+import { traeSoloCategory } from './categories/ai-dev-tools/trae-solo';
+
 export interface Category {
   id: string;
   name: string;
@@ -34,5 +36,6 @@ export const categories: Category[] = [
     description: '加固应用层架构与终端设备，抵御各类漏洞利用及恶意代码执行。',
     icon: 'Smartphone',
     order: 4,
-  }
+  },
+  traeSoloCategory
 ];
