@@ -1,1 +1,0 @@
-# Trae SOLO 学习教程\n\nTrae SOLO 是新一代基于自研大模型（如 SOLO）的 AI 原生 IDE 与 Agent 开发框架，提供全自动化的代码生成与重构能力。本教程涵盖了 Trae SOLO 的核心技术模块。\n\n## 目录\n\n- [Agent 模式自主编程](./trae-agent-mode.md)\n- [Builder 模式项目生成](./trae-builder-mode.md)\n- [MCP 协议扩展集成](./trae-mcp-integration.md)\n- [智能上下文感知引擎](./trae-context-engine.md)\n

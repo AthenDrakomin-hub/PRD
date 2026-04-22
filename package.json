@@ -4,15 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "workspaces": [
-    "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "dev:web": "npm run dev --workspace=kforge-web",
     "dev:daemon": "npm run dev --workspace=@kforge/daemon",
     "build:core": "npm run build --workspace=@kforge/core",
     "build:daemon": "npm run build --workspace=@kforge/daemon",
-    "build:web": "npm run build --workspace=kforge-web",
     "export": "node scripts/export-knowledge.js"
   },
   "devDependencies": {
