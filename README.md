@@ -10,6 +10,9 @@ KForge | 墟 是一个面向个人/团队的“知识锻造库”：用可视化
 - 高扩展：新增内容只改数据文件，页面自动更新
 - AI-Ready 导出：一键导出 JSON / Markdown ZIP，便于 RAG 与 Agent 体系接入
 
+## 战略与路线图
+关于 KForge 的核心市场定位、受众痛点分析、竞争格局以及未来 12 个月的演进规划，请参阅详细的[产品战略与商业路线图文档](docs/STRATEGY.md)。
+
 ## 技术栈
 - **前端框架**: React 18 + TypeScript + Vite
 - **路由与状态**: React Router v6 + Zustand (配合 localStorage 状态持久化)

@@ -1,0 +1,3 @@
+- [x] `src/config/echartsTheme.ts` exists and contains ECharts styles.
+- [x] `src/pages/TechTree/index.tsx` is successfully refactored and no longer contains hardcoded style configurations (colors, fonts, etc.).
+- [x] ECharts `TechTree` nodes dynamically change color depending on whether their corresponding `userProgress` status is `completed`, `in_progress`, or `not_started`.

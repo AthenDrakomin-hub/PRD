@@ -4,6 +4,7 @@ import { Search, ArrowLeft, X, ExternalLink, Activity } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { categories, techItems, TechItem } from '../../data';
 import MarkdownViewer from '../../components/MarkdownViewer';
+import AiExplanation from '../../components/AiExplanation';
 
 export const CategoryDetail: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -176,6 +177,10 @@ export const CategoryDetail: React.FC = () => {
             </div>
             
             <div className="flex-1 overflow-y-auto p-6 markdown-body">
+              <div className="mb-6">
+                <AiExplanation tech={selectedTech} />
+              </div>
+              
               {selectedTech.path ? (
                 <MarkdownViewer filePath={selectedTech.path} />
               ) : (

@@ -1,0 +1,2 @@
+- [x] `docs/STRATEGY.md` is created and contains the complete market analysis, UVP, competitive landscape, and roadmap provided by the user.
+- [x] `README.md` is updated with a visible link to the new `docs/STRATEGY.md` file.
