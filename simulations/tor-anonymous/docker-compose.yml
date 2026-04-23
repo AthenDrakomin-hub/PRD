@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  tor-router:
+    image: osminogin/tor-simple:latest
+    container_name: kforge-tor-${KFORGE_NODE_ID:-default}
+    ports:
+      - "${TOR_SOCKS_PORT:-9050}:9050"
+    environment:
+      # Optional: force tor to change identity every N seconds
+      - TOR_NEWNYM_INTERVAL=${TOR_INTERVAL:-60}
+    restart: unless-stopped

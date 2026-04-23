@@ -1,0 +1,8 @@
+proxies:
+  - name: "kforge-proxy"
+    type: socks5
+    server: ${PROXY_SERVER}
+    port: ${PROXY_PORT}
+
+tproxy: true
+tproxy-port: 7890

@@ -33,7 +33,10 @@ const SAAS_READY_SLUGS = [
   'ddos-mitigation', // DDoS 隐匿盾
   'waf',             // WAF
   'port-knocking-spa', // SPA 单包授权
-  'deception-defense'  // 高交互蜜罐
+  'deception-defense',  // 高交互蜜罐
+  '透明代理_手把手教程', // TPROXY 透明代理
+  'ids-ips',          // Suricata IDS/IPS
+  'anonymous-networks' // Tor 匿名网络
 ];
 
 export function getTechTree(): TechCategory[] {

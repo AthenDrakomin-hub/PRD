@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  suricata:
+    image: jasonish/suricata:latest
+    container_name: kforge-ids-${KFORGE_NODE_ID:-default}
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+    environment:
+      - INTERFACE=${LISTEN_INTERFACE:-eth0}
+    volumes:
+      - ./suricata.yaml:/etc/suricata/suricata.yaml
+      - ./rules:/var/lib/suricata/rules
+      - ./logs:/var/log/suricata

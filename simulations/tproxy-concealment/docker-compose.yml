@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  tproxy-shield:
+    image: dreamacro/clash:latest
+    container_name: kforge-tproxy-${KFORGE_NODE_ID:-default}
+    cap_add:
+      - NET_ADMIN
+    network_mode: "host"
+    environment:
+      - PROXY_SERVER=${PROXY_SERVER:-1.1.1.1}
+      - PROXY_PORT=${PROXY_PORT:-1080}
+    volumes:
+      - ./start.sh:/start.sh
+      - ./config.yaml:/root/.config/clash/config.yaml
+    entrypoint: ["/bin/sh", "/start.sh"]
