@@ -9,10 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@kforge/shared-schema": "*",
     "next": "16.2.4",
+    "qrcode.react": "^4.2.0",
     "react": "19.2.4",
-    "react-dom": "^19.0.0",
-    "@kforge/shared-schema": "*"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
