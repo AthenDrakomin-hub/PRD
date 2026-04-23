@@ -1,12 +1,11 @@
 {
   "name": "kforge-monorepo",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "workspaces": [
     "apps/*",
-    "packages/*",
-    "@kforge/cli"
+    "packages/*"
   ],
   "scripts": {
     "dev:admin": "npm run dev --workspace=@kforge/admin",
@@ -15,11 +14,6 @@
     "build:core": "npm run build --workspace=@kforge/core",
     "build:daemon": "npm run build --workspace=@kforge/daemon",
     "build:admin": "npm run build --workspace=@kforge/admin",
-    "build:h5": "npm run build --workspace=@kforge/h5-builder",
-    "export": "node scripts/export-knowledge.js"
-  },
-  "devDependencies": {
-    "archiver": "^7.0.1",
-    "gray-matter": "^4.0.3"
+    "build:h5": "npm run build --workspace=@kforge/h5-builder"
   }
 }
