@@ -20,6 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build Dependencies
+        run: |
+          npm run build --workspace=@kforge/shared-schema
+          npm run build --workspace=@kforge/core
+
       - name: Build and Obfuscate CLI
         run: npm run build --workspace=@kforge/cli
 
@@ -47,7 +52,7 @@ jobs:
           echo "FROM node:18-alpine" > Dockerfile
           echo "WORKDIR /app" >> Dockerfile
           echo "COPY . ." >> Dockerfile
-          echo "RUN npm install && npm run build --workspace=@kforge/daemon" >> Dockerfile
+          echo "RUN npm install && npm run build --workspaces --if-present" >> Dockerfile
           echo "EXPOSE 4000" >> Dockerfile
           echo "CMD [\"npm\", \"run\", \"dev:daemon\"]" >> Dockerfile
           docker build -t kforge-daemon:latest .
