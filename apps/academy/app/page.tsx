@@ -1,13 +1,13 @@
 import { getTechTree } from '../../lib/knowledge';
 import Link from 'next/link';
-import { Shield, BookOpen, Activity, Zap, Play } from 'lucide-react';
+import { Shield, BookOpen, Zap, Play, Terminal, ArrowRight } from 'lucide-react';
 
 export default function TechTreePage() {
   const categories = getTechTree();
 
   return (
     <div className="min-h-screen bg-[#0B1021] text-gray-200 font-sans selection:bg-[#00E5FF]/30">
-      {/* 顶部导航 */}
+      {/* 重构的顶级商业导航栏 */}
       <header className="h-16 border-b border-gray-800/50 bg-[#0B1021]/80 backdrop-blur-md sticky top-0 z-50 px-6 lg:px-12 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Shield className="w-6 h-6 text-[#00E5FF]" />
@@ -16,12 +16,30 @@ export default function TechTreePage() {
             <span className="text-[10px] text-[#00E5FF] tracking-widest leading-none mt-1 uppercase">Academy</span>
           </div>
         </div>
-        <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-          <Link href="/" className="text-white">知识锻造科技树</Link>
-          <a href="https://kforge-saas.com" className="hover:text-white transition-colors flex items-center gap-1">
-            <Zap className="w-4 h-4 text-yellow-400" /> SaaS 防御控制台
+        
+        {/* 核心商业漏斗导航：去掉了没用的学习路径、实战靶场 */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+          <Link href="/" className="text-white hover:text-white transition-colors">知识锻造科技树</Link>
+          <a href="https://kforge-saas.com/pricing" className="hover:text-white transition-colors flex items-center gap-1.5">
+            <Zap className="w-4 h-4 text-yellow-400" /> Web3 会员订阅
+          </a>
+          <a href="https://admin.kforge-saas.com" className="hover:text-white transition-colors flex items-center gap-1.5">
+            <Shield className="w-4 h-4" /> 防御控制台
+          </a>
+          <a href="https://docs.kforge-saas.com" className="hover:text-white transition-colors flex items-center gap-1.5">
+            <Terminal className="w-4 h-4" /> 开发者 API / CLI
           </a>
         </nav>
+
+        {/* 替换原先危险的"导出知识库"，改为最具商业价值的 CTA (Call To Action) */}
+        <div className="flex items-center">
+          <a 
+            href="https://kforge-saas.com/pricing"
+            className="flex items-center gap-2 bg-[#00E5FF]/10 border border-[#00E5FF]/30 text-[#00E5FF] hover:bg-[#00E5FF] hover:text-[#0B1021] font-bold px-4 py-2 rounded-lg text-sm transition-all shadow-[0_0_15px_rgba(0,229,255,0.15)] hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+          >
+            获取 Web3 防御通行证 <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
       </header>
 
       {/* 页面主标题区 */}

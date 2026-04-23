@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import Link from 'next/link';
-import { ChevronLeft, Zap, ShieldAlert, Cpu } from 'lucide-react';
+import { ChevronLeft, Zap, ShieldAlert, Cpu, Terminal, Shield, ArrowRight } from 'lucide-react';
 import 'highlight.js/styles/atom-one-dark.css';
 
 export async function generateStaticParams() {
@@ -31,11 +31,31 @@ export default function ArticlePage({ params }: { params: { category: string, sl
     <div className="min-h-screen bg-[#0B1021] text-gray-300 font-sans selection:bg-[#00E5FF]/30 pb-24">
       {/* 顶部导航 */}
       <header className="h-16 border-b border-gray-800/50 bg-[#0B1021]/80 backdrop-blur-md sticky top-0 z-50 px-6 lg:px-12 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors">
-          <ChevronLeft className="w-4 h-4" /> 返回科技树
-        </Link>
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] font-bold text-[#00E5FF] tracking-widest leading-none uppercase border border-[#00E5FF]/30 px-2 py-1 rounded-full bg-[#00E5FF]/10">KForge Academy</span>
+        <div className="flex items-center gap-6">
+          <Link href="/" className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors border-r border-gray-800 pr-6">
+            <ChevronLeft className="w-4 h-4" /> 返回科技树
+          </Link>
+          <div className="hidden md:flex items-center gap-2">
+            <span className="text-[10px] font-bold text-[#00E5FF] tracking-widest leading-none uppercase border border-[#00E5FF]/30 px-2 py-1 rounded-full bg-[#00E5FF]/10">KForge Academy</span>
+          </div>
+        </div>
+
+        {/* 右侧商业转化漏斗 */}
+        <div className="flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-gray-400">
+            <a href="https://admin.kforge-saas.com" className="hover:text-white transition-colors flex items-center gap-1.5">
+              <Shield className="w-4 h-4" /> 防御控制台
+            </a>
+            <a href="https://docs.kforge-saas.com" className="hover:text-white transition-colors flex items-center gap-1.5">
+              <Terminal className="w-4 h-4" /> 开发者 API / CLI
+            </a>
+          </nav>
+          <a 
+            href="https://kforge-saas.com/pricing"
+            className="flex items-center gap-2 bg-[#00E5FF]/10 border border-[#00E5FF]/30 text-[#00E5FF] hover:bg-[#00E5FF] hover:text-[#0B1021] font-bold px-4 py-2 rounded-lg text-sm transition-all shadow-[0_0_15px_rgba(0,229,255,0.15)] hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+          >
+            获取 Web3 防御通行证 <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </header>
 
