@@ -14,9 +14,7 @@ const server = http.createServer(app);
 const wss = new WebSocketServer({ server, path: '/api/ws' });
 
 // Initialize Prisma Database Client
-const prisma = new PrismaClient({
-  adapter: null // For local SQLite usage
-});
+const prisma = new PrismaClient();
 
 const activeSkills = new Map<string, SkillRunner>();
 const SIMULATIONS_DIR = path.join(__dirname, '../../../simulations');
