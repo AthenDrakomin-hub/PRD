@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Activity, ShieldAlert, Target, Globe, ChevronLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 

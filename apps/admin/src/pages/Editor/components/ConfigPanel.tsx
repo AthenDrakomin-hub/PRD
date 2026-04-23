@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Node } from '@xyflow/react';
+import type { Node } from '@xyflow/react';
 import { Settings, Wallet, Crown, Globe } from 'lucide-react';
 
 interface ConfigPanelProps {
@@ -22,7 +22,8 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
 
   const handleNodeConfigChange = (key: string, value: string) => {
     if (!selectedNode) return;
-    const newConfig = { ...selectedNode.data.config, [key]: value };
+    const currentConfig = selectedNode.data.config || {};
+    const newConfig = { ...(currentConfig as Record<string, any>), [key]: value };
     onUpdateNode(selectedNode.id, { ...selectedNode.data, config: newConfig });
   };
 
@@ -79,7 +80,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
                       <label className="block text-xs font-bold text-gray-400 mb-1.5">外部监听端口 (PUBLIC_PORT)</label>
                       <input 
                         type="text" 
-                        value={selectedNode.data.config?.PUBLIC_PORT || '8080'}
+                        value={(selectedNode.data.config as Record<string, any>)?.PUBLIC_PORT || '8080'}
                         onChange={(e) => handleNodeConfigChange('PUBLIC_PORT', e.target.value)}
                         className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-cyber-accent"
                       />
@@ -88,7 +89,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
                       <label className="block text-xs font-bold text-gray-400 mb-1.5">后端目标服务 (TARGET_HOST)</label>
                       <input 
                         type="text" 
-                        value={selectedNode.data.config?.TARGET_HOST || 'host.docker.internal'}
+                        value={(selectedNode.data.config as Record<string, any>)?.TARGET_HOST || 'host.docker.internal'}
                         onChange={(e) => handleNodeConfigChange('TARGET_HOST', e.target.value)}
                         className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-cyber-accent"
                       />
@@ -97,7 +98,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
                       <label className="block text-xs font-bold text-gray-400 mb-1.5">后端目标端口 (TARGET_PORT)</label>
                       <input 
                         type="text" 
-                        value={selectedNode.data.config?.TARGET_PORT || '3000'}
+                        value={(selectedNode.data.config as Record<string, any>)?.TARGET_PORT || '3000'}
                         onChange={(e) => handleNodeConfigChange('TARGET_PORT', e.target.value)}
                         className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-cyber-accent"
                       />
@@ -112,7 +113,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
                       <label className="block text-xs font-bold text-gray-400 mb-1.5">暴露端口 (PUBLIC_PORT)</label>
                       <input 
                         type="text" 
-                        value={selectedNode.data.config?.PUBLIC_PORT || '2222'}
+                        value={(selectedNode.data.config as Record<string, any>)?.PUBLIC_PORT || '2222'}
                         onChange={(e) => handleNodeConfigChange('PUBLIC_PORT', e.target.value)}
                         className="w-full bg-dark-bg border border-dark-border rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-cyber-accent"
                       />

@@ -1,25 +1,22 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { 
   ReactFlow, 
-  ReactFlowProvider, 
   addEdge, 
   useNodesState, 
   useEdgesState, 
   Controls, 
-  Background,
-  Connection,
-  Edge,
-  Node
+  Background
 } from '@xyflow/react';
+import type { Connection, Edge, Node } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { Sidebar } from './components/Sidebar';
 import { ConfigPanel } from './components/ConfigPanel';
 import { SkillNode } from './components/SkillNode';
-import { KForgeMembershipDSL } from '@kforge/shared-schema';
-import { Play, Download, Save } from 'lucide-react';
+import type { KForgeMembershipDSL } from '@kforge/shared-schema';
+import { Play, Save } from 'lucide-react';
 
 const nodeTypes = {
-  skill: SkillNode,
+  skill: SkillNode as any,
 };
 
 let id = 0;
@@ -27,8 +24,8 @@ const getId = () => `node_${id++}`;
 
 export const CanvasEditor = () => {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
 
@@ -39,8 +36,8 @@ export const CanvasEditor = () => {
   });
 
   const onConnect = useCallback(
-    (params: Edge | Connection) => setEdges((eds) => addEdge({ ...params, animated: true, style: { stroke: '#00E5FF' } }, eds)),
-    []
+    (params: Connection | Edge) => setEdges((eds) => addEdge({ ...params, animated: true, style: { stroke: '#00E5FF' } } as any, eds)),
+    [setEdges]
   );
 
   const onDragOver = useCallback((event: React.DragEvent) => {
@@ -77,7 +74,7 @@ export const CanvasEditor = () => {
 
       setNodes((nds) => nds.concat(newNode));
     },
-    [reactFlowInstance]
+    [reactFlowInstance, setNodes]
   );
 
   const handleUpdateNode = (nodeId: string, newData: any) => {
@@ -103,9 +100,9 @@ export const CanvasEditor = () => {
       topology: {
         nodes: nodes.map(n => ({
           id: n.id,
-          skillId: n.data.skillId as string,
+          skillId: (n.data as any).skillId as string,
           position: n.position,
-          config: n.data.config as Record<string, any>
+          config: (n.data as any).config as Record<string, any>
         })),
         edges: edges.map(e => ({
           id: e.id,

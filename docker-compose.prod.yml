@@ -71,6 +71,7 @@ services:
       # 挂载前端构建产物
       - ./apps/h5-builder/out:/usr/share/nginx/html/h5:ro
       - ./apps/admin/dist:/usr/share/nginx/html/admin:ro
+      - ./apps/academy/out:/usr/share/nginx/html/academy:ro
       # SSL 证书目录 (生产环境必需)
       - ./docker/nginx/ssl:/etc/nginx/ssl:ro
     depends_on:

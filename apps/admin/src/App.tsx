@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactFlowProvider } from '@xyflow/react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { CanvasEditor } from './pages/Editor';
