@@ -11,9 +11,11 @@
     "dev:admin": "npm run dev --workspace=@kforge/admin",
     "dev:h5": "npm run dev --workspace=@kforge/h5-builder",
     "dev:daemon": "npm run dev --workspace=@kforge/daemon",
+    "dev:academy": "npm run dev --workspace=@kforge/academy",
     "build:core": "npm run build --workspace=@kforge/core",
     "build:daemon": "npm run build --workspace=@kforge/daemon",
     "build:admin": "npm run build --workspace=@kforge/admin",
-    "build:h5": "npm run build --workspace=@kforge/h5-builder"
+    "build:h5": "npm run build --workspace=@kforge/h5-builder",
+    "build:academy": "npm run build --workspace=@kforge/academy"
   }
 }
