@@ -1,4 +1,4 @@
-import { getArticleContent, getTechTree } from '../../../lib/knowledge';
+import { getArticleContent, getTechTree } from '@/lib/knowledge';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -20,8 +20,9 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default function ArticlePage({ params }: { params: { category: string, slug: string } }) {
-  const article = getArticleContent(params.category, params.slug);
+export default async function ArticlePage({ params }: { params: Promise<{ category: string, slug: string }> }) {
+  const resolvedParams = await params;
+  const article = getArticleContent(resolvedParams.category, resolvedParams.slug);
 
   if (!article) {
     notFound();
